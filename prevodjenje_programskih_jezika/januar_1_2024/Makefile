@@ -1,0 +1,23 @@
+CC = g++
+CFLAGS = -Wall -Wextra 
+
+parser: parser.o lexer.o 
+	$(CC) $(CFLAGS) $^ -o $@ 
+
+lexer.o: lex.yy.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+lex.yy.c: lexer.l parser.tab.hpp
+	flex -l lexer.l
+
+parser.o: parser.tab.cpp parser.tab.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+parser.tab.cpp parser.tab.hpp: parser.ypp
+	bison -d -v parser.ypp
+
+.PHONY:
+	clean
+
+clean:
+	rm -f parser.tab.* *.o parser lex.yy.c

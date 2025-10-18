@@ -1,0 +1,20 @@
+parnost(X, M, N):- (X mod 2) \= ((M+N) mod 2).
+
+resetka(Vars):- Vars = [A, B, C, D, E, F, G, H, I],
+    Vars :: [1..9],
+    M :: [1..3],
+    N :: [1..3],
+    alldifferent(Vars),
+    parnost(A, M, N),
+    parnost(B, M, N),
+    parnost(C, M, N),
+    parnost(D, M, N),
+    parnost(E, M, N),
+    parnost(F, M, N),
+    parnost(G, M, N),
+    parnost(H, M, N),
+    parnost(I, M, N),
+    labeling(Vars),
+    write(A), write(' '), write(B), write(' '), write(C), nl,
+    write(D), write(' '), write(E), write(' '), write(F), nl,
+    write(G), write(' '), write(H), write(' '), write(I), nl.

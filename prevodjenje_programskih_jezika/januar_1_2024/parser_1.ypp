@@ -1,0 +1,110 @@
+%{
+    #include <iostream>
+    #include <cstdio>
+    #include <string>
+    #include "tablicaSimbola.hpp"
+    #include "stablo.hpp"
+
+    extern int yylex(); // povezuje lekser sa parserom jer on radi samo sa tokenima a ne sa tekstualnim fajlom
+    extern int yylex_destroy(); // brise lekser tj oslobadja alociranu memoriju
+
+    void yyerror(const std::string& s) {
+        std::cerr << "sintaksna greska: " << s << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    TablicaSimbola ts;
+    ASTCvor* ast = nullptr;
+%}
+
+%union {
+    std::string* s;
+    int b;
+    char c;
+    ASTCvor* cvor;
+}
+
+%token DEF PRINT EQ NEQ GEQ LEQ 
+%token<s> ID
+%token<b> BROJ
+%token<c> FORMAT
+
+%type<cvor> izraz logicka_naredba naredba niz_naredbi
+
+%left '|'
+%left '^'
+%left '&' 
+%left SHL SHR
+%left '+' '-'
+%left '*' '/' '%'
+%right '~'
+%right UMINUS
+
+%start program
+
+%%
+
+program: niz_naredbi { ast = $1; }
+    ;
+
+niz_naredbi: niz_naredbi naredba {
+        NizNaredbi* nn = dynamic_cast<NizNaredbi*>($1);
+        nn->DodajNaredbu($2);
+        $$ = nn;
+    }
+    | naredba {
+        NizNaredbi* nn = new NizNaredbi();
+        nn->DodajNaredbu($1);
+        $$ = nn;
+    }
+    ;
+
+naredba: DEF ID ';' { $$ = new Deklaracija(*$2); delete $2; }
+    | DEF ID '=' izraz ';' { $$ = new Definicija(*$2, $4); delete $2; }
+    | ID '=' izraz ';' { $$ = new Dodela(*$1, $3); delete $1; }
+    | PRINT '(' '"' FORMAT '"' ',' izraz ')' ';' { $$ = new Ispis($4, $7); }
+    | logicka_naredba ';' { $$ = new Ispis($1); }
+    ;
+
+izraz: izraz '+' izraz { $$ = new BinarnaOperacija("+", $1, $3); }
+    | izraz '-' izraz { $$ = new BinarnaOperacija("-", $1, $3); }
+    | izraz '*' izraz { $$ = new BinarnaOperacija("*", $1, $3); }
+    | izraz '/' izraz { $$ = new BinarnaOperacija("/", $1, $3); }
+    | izraz '%' izraz { $$ = new BinarnaOperacija("%", $1, $3); }
+    | '-' izraz %prec UMINUS { $$ = new UnarnaOperacija("-", $2); }
+    | '(' izraz ')' { $$ = new Grupisanje($2); }
+    | izraz '&' izraz { $$ = new BinarnaOperacija("&", $1, $3); }
+    | izraz '|' izraz { $$ = new BinarnaOperacija("|", $1, $3); }
+    | izraz '^' izraz { $$ = new BinarnaOperacija("^", $1, $3); }
+    | '~' izraz { $$ = new UnarnaOperacija("~", $2); }
+    | izraz SHL BROJ { $$ = new Siftovanje("<<", $1, $3); }
+    | izraz SHR BROJ { $$ = new Siftovanje(">>", $1, $3); }
+    | ID { $$ = new Promenljiva(*$1); delete $1; }
+    | BROJ { $$ = new Konstanta($1); }
+    ;
+
+logicka_naredba: izraz '<' izraz { $$ = new BinarnaOperacija("<", $1, $3); }
+    | izraz '>' izraz { $$ = new BinarnaOperacija(">", $1, $3); }
+    | izraz GEQ izraz { $$ = new BinarnaOperacija(">=", $1, $3); }
+    | izraz LEQ izraz { $$ = new BinarnaOperacija("<=", $1, $3); }
+    | izraz EQ izraz { $$ = new BinarnaOperacija("==", $1, $3); }
+    | izraz NEQ izraz { $$ = new BinarnaOperacija("!=", $1, $3); }
+    ;
+
+%%
+
+int main() {
+
+    if(yyparse() == 0) {
+        std::cout << "sve ok" << std::endl;
+    } else {
+        yyerror("");
+    }
+
+    std::cout << *ast << std::endl;
+
+    ast->Interpretiraj(ts);
+
+    yylex_destroy();
+    exit(EXIT_SUCCESS);
+}

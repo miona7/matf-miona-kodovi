@@ -1,0 +1,1 @@
+data BulovskiTip = Tacno | Netacno

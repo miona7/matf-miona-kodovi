@@ -1,0 +1,37 @@
+start:
+    string x;                           // definise promenljivu x cija je vrednost ""
+    string y = "ppj";                   // definise promenljivu y cija je vrednost "ppj"
+    string z;                           // definise promenljivu z cija je vrednost ""
+    std_output << x;                    // na stdout stampa vrednost definise promenljive x 
+    std_error << y;                     // na stderr stampa vrednost definise promenljive x
+    z = y;                              // promenljivoj z dodeljuje vrednost promenljive y
+    std_output << "Zdravo svete!";      // na stdout ispisuje poruku 
+
+        
+    string w = "ppj2024" * y;               // definise promenljivu w cija je vrednost "ppj"
+    x = "MATF" + "BG";                      // promenljivoj x dodeljuje vrednost "MATFBG"
+    std_output << ~"matf_bg";               // na stdout stampa "gb_ftam"
+    std_output << (~"abjpp" * y) + "2024";   // na stdout stampa "ppj2024"
+
+    string abc;                             // definise promenljivu abc cija je vrednost ""
+    std_input >> abc;                       // ucitava strinf sa stdin i upisuje ga u promenljivu abc
+    print_ALL;                              // ispisuje sve definisane promenljive i njihove vrednosti
+    std_output << "aaabc" == "aaabc";       // na stdout ispisuje "1"
+    std_output << "www" != "www";           // na stdout ispisuje "0"
+    std_output << "here" != "there";        // na stdout ispisuje "1"
+
+
+    string a = "abc";
+    string b = "abcde";
+
+    if (a == b) {
+        std_output << "Stringovi su jednaki";
+    }
+    else {
+        std_output << "Stringovi su razliciti";
+    };
+
+    if (a != b) {
+        std_output << "Stringovi su razliciti";
+    };
+end

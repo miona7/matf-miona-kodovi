@@ -1,0 +1,1 @@
+type ParRazlicitih a b = (a, b) 

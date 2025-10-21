@@ -21,7 +21,7 @@ The repository is organized by courses and programming languages:
 - **Prevodjenje programskih jezika** – C++, Yacc, Bison  
   Code related to compiler construction, language parsing, and syntax analysis.
 
-- **Programske paradigme** – Haskell, Prolog, Scala  
+- **Programske paradigme** – Haskell, Prolog, Scala, Python  
   Examples and assignments exploring functional and declarative programming paradigms.  
 
 ---

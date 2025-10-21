@@ -18,7 +18,10 @@ The repository is organized by courses and programming languages:
 - **Operativni sistemi** – C  
   Projects and exercises related to OS concepts, including process management and memory handling.  
 
-- **Prevodjenje programskih jezika** – C++, Yacc, Bison  
+- **Relacione baze podataka** – SQL  
+  Exercises and queries related to relational database design and SQL programming.  
+
+- **Prevođenje programskih jezika** – C++, Yacc, Bison  
   Code related to compiler construction, language parsing, and syntax analysis.
 
 - **Programske paradigme** – Haskell, Prolog, Scala, Python  

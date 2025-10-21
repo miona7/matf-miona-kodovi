@@ -1,0 +1,6 @@
+range of dx is dosije
+range of ix is ispit
+range of px is predmet
+
+dx.indeks, dx.ime, dx.prezime, px.naziv
+where px.espb = 6 and exists ix ( ix.indeks = dx.indeks and ix.idpredmeta = px.idpredmeta and ix.ocena > 5 )

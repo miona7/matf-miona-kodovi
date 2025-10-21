@@ -1,0 +1,21 @@
+--ra
+
+(((predmet where espb > 5)[idpredmeta] join ispit)[skgodina, oznakaroka, idpredmeta, indeks]
+divideby
+dosije[indeks]) join ispitnirok)[naziv]
+
+--rr
+
+range of dx is dosije
+range of px is predmet
+range of irx is ispitnirok
+range of ix is ispit
+
+irx.naziv
+where exists px (px.espb > 5
+                and forall dx (
+                    exists ix ( ix.indeks = dx.indeks and ix.idpredmeta = px.id
+                                and ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka) )
+)
+
+

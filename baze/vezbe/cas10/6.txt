@@ -1,0 +1,4 @@
+((dosije times ispit) where dosije.indeks = ispit.indeks)[dosije.indeks, ime, prezime, idpredmeta, ocena]
+
+
+(dosije join ispit)[indeks, ime, prezime, idpredmeta, ocena]

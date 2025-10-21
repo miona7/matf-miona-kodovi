@@ -1,0 +1,7 @@
+(dosije join (dosije where indeks = 20130023)[mestorodjenja])[ime, prezime]
+
+
+range of dx, dy is dosije
+
+dx.ime, dx.prezime
+where exists dy ( dy.indeks = 20130023 and dy.mestorodjenja = dx.mestorodjenja )

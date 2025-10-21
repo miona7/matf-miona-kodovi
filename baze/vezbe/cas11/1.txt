@@ -1,0 +1,2 @@
+range of px is predmet
+px.oznaka, px.naziv

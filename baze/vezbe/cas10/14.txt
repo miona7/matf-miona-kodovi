@@ -1,0 +1,5 @@
+define alias p for predmet
+
+predmet[naziv, espb]
+minus
+((p times predmet) where p.espb < predmet.espb)[p.naziv, p.espb]

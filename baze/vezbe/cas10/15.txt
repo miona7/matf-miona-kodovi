@@ -1,0 +1,3 @@
+(ispit where ocena > 5)[skgodina, indeks, idpredmeta]
+divideby
+predmet[idpredmeta]

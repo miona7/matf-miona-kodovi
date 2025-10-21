@@ -1,0 +1,3 @@
+select p1.OZNAKA, p1.ESPB, p2.OZNAKA, p2.ESPB
+from DA.PREDMET p1 join DA.PREDMET p2 on p1.ESPB = p2.ESPB
+where p1.OZNAKA < p2.OZNAKA

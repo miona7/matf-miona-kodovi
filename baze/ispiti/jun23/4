@@ -1,0 +1,9 @@
+((((ispitnirok where skgodina = 2020) join ispit) times predmet) where ispit.idpredmeta = predmet.idpredmeta)
+[ispitnirok.naziv, ispitnirok.skgodina, predmet.naziv, ispit.ocena]
+
+range of ix is ispit
+range of irx is ispitnirok
+range of px is predmet
+
+irx.naziv, irx.skgodina, px.naziv, ix.ocena
+where irx.skgodina = 2020 and irx.skgodina = ix.skgodina and irx.oznakaroka = ix.oznakaroka and ix.idpredmeta = px.idpredmeta

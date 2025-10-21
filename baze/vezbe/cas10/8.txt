@@ -1,0 +1,5 @@
+define alias p1 for predmet
+define alias p2 for predmet
+
+((p1 times p2)
+where p1.espb = p2.espb and p1.idpredmeta < p2.idpredmeta)[p1.oznaka, p1.naziv, p2.oznaka, p2.naziv]

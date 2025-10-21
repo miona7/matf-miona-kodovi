@@ -1,0 +1,16 @@
+define alias d1 for dosije
+define alias d2 for dosije
+
+((((ispit[indeks, skgodina, oznakaroka]
+divideby
+ispitnirok[skgodina, oznakaroka]) join d1) times d2) where d1.mestorodjenja = d2.mestorodjenja)
+[d1.indeks, d1.ime, d2.indeks, d2.ime]
+
+
+range of dx, dy is dosije
+range of ix is ispit
+range of irx is ispitnirok
+
+dx.indeks, dx.ime, dy.indeks, dy.ime
+where dx.mestorodjenja = dy.mestorodjenja and dx.indeks < dy.indeks
+        and forall irx ( exists ix (ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka and ix.indeks = dx.indeks) )

@@ -1,0 +1,4 @@
+select *
+from DA.ISPITNIROK
+where SKGODINA <> 2015 and SKGODINA <> 2016 and SKGODINA <> 2017 and SKGODINA <> 2018 and SKGODINA <> 2019;
+

@@ -1,0 +1,5 @@
+range of ix is ispit
+range of px is predmet
+
+px.oznaka, px.naziv
+where exists ix ( ix.idpredmeta = px.idpredmeta and ix.ocena > 5 and ix.indeks = 20140026)

@@ -1,0 +1,2 @@
+select INDEKS, NAZIVPREDMETA, coalesce(OCENA, -1)
+from DA.PRIZNATISPIT

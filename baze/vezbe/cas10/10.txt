@@ -1,0 +1,3 @@
+dosije[indeks]
+minus
+(ispit where oznakaroka = 'apr')[indeks]

@@ -1,0 +1,2 @@
+predmet
+where espb = 6

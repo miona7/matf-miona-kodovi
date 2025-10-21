@@ -1,0 +1,6 @@
+range of dx is dosije
+range of px is predmet
+range of ix is ispit
+
+px.naziv
+where forall dx ( exists ix ( ix.idpredmeta = px.idpredmeta and ix.indeks = dx.indeks ) )

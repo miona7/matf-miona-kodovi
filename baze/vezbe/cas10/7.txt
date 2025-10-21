@@ -1,0 +1,3 @@
+ispit[idpredmeta, indeks]
+divideby
+dosije[indeks]

@@ -1,0 +1,1 @@
+((dosije times ispit) where datupisa = datpolaganja)[dosije.indeks, ime, prezime]

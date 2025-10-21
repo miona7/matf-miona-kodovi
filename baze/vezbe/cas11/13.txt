@@ -1,0 +1,7 @@
+range of ix is ispit
+range of iy is ispit
+range of px is predmet
+
+ix.skgodina, ix.indeks
+where forall px ( exists iy ( iy.idpredmeta = px.idpredmeta and iy.ocena > 5
+                    and iy.skgodina = ix.skgodina and iy.indeks = ix.indeks ) )

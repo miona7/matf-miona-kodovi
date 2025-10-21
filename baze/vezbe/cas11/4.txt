@@ -1,0 +1,5 @@
+range of px is predmet
+range of py is predmet
+
+px.oznaka, px.naziv, py.oznaka, py.naziv
+where px.espb = py.espb and px.idpredmeta < py.idpredmeta

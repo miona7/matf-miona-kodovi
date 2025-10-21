@@ -1,0 +1,3 @@
+range of px is predmet
+px.*
+where px.espb = 6

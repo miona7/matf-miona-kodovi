@@ -1,0 +1,10 @@
+range of dx is dosije
+range of ix is ispit
+range of iy is ispit
+range of px is predmet
+
+dx.indeks, dx.ime, dx.prezime
+where exists ix ( ix.indeks = dx.indeks and ix.ocena > 5
+                    and exists px ( ix.idpredmeta = px.idpredmeta and px.naziv = 'Programiranje 1'
+                        and not exists iy ( iy.indeks = dx.indeks and iy.ocena > 5 and
+                                                iy.idpredmeta <> px.idpredmeta ) ) )

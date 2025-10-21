@@ -1,0 +1,20 @@
+(ispit where ocena = 9 or ocena = 10)[indeks]
+
+(ispit where ocena = 9)[indeks]
+union
+(ispit where ocena = 10)[indeks]
+
+
+(ispit where ocena = 9)[indeks]
+intersect
+(ispit where ocena = 10)[indeks]
+
+
+(ispit where ocena = 10)[indeks]
+minus
+(ispit where ocena = 9)[indeks]
+
+
+(ispit where ocena = 10)[indeks]
+minus
+(ispit where ocena <> 10)[indeks]

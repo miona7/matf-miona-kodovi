@@ -1,0 +1,23 @@
+(ispitnirok[naziv, skgodina, oznakaroka]
+divideby
+((predmet where espb = 5)[idpredmeta] join ispit)[skgodina, oznakaroka])
+intersect
+(ispitnirok[naziv, skgodina, oznakaroka]
+divideby
+((predmet where espb = 8)[idpredmeta] join ispit)[skgodina, oznakaroka])
+intersect
+(ispitnirok join ((ispit where ocena > 5) join (dosije where mestorodjenja = 'Beograd')))[naziv]
+
+
+range of dx is dosije
+range of ix is ispit
+range of irx is ispitnirok
+range of px is predmet
+
+irx.naziv
+where exists ix (ix.ocena > 5 and ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka
+                    and exists dx (dx.indeks = ix.indeks and dx.mestorodjenja = 'Beograd'))
+       and forall px (if px.espb = 5
+                        then exists ix (ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka and ix.idpredmeta = px.idpredmeta))
+       and forall px (if px.espb = 8
+                        then exists ix (ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka and ix.idpredmeta = px.idpredmeta))

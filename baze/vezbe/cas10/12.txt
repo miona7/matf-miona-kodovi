@@ -1,0 +1,3 @@
+(predmet where espb > 5)[idpredmeta]
+union
+(ispit where ocena > 5 and datpolaganja = '20.01.2015')[idpredmeta]

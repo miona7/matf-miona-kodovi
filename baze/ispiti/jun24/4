@@ -1,0 +1,12 @@
+(predmet where espb = 6)[oznaka, naziv]
+union
+(((ispitnirok where naziv = 'Februar 2015') join (ispit where ocena > 5))[idpredmeta] join predmet)[oznaka, naziv]
+
+range of px is predmet
+range of ix is ispit
+range of irx is ispitnirok
+
+px.oznaka, px.naziv
+where px.espb = 6 or exists ix (ix.ocena > 5 and ix.idpredmeta = px.idpredmeta
+                                    and exists irx (irx.skgodina = ix.skgodina and irx.oznakaroka = ix.oznakaroka
+                                                        and irx.naziv = 'Februar 2015'))

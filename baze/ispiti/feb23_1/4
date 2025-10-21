@@ -1,0 +1,15 @@
+define alias d for dosije
+
+((dosije times d) where dosije.ime = d.ime)[dosije.ime, dosije.prezime, dosije.indeks, dosije.mestorodjenja]
+union
+(dosije join ((ispit where ocena >= 8) join (predmet where naziv = 'Programiranje 1'))[indeks])[dosije.ime, dosije.prezime, dosije.indeks, dosije.mestorodjenja]
+
+
+
+range of dx, dy is dosije
+range of px is predmet
+range of ix is ispit
+
+dx.ime, dx.prezime, dx.indeks, dx.mestorodjenja
+where exists dy (dx.ime = dy.ime) or exists ix (ix.indeks = dx.indeks and ocena >= 8
+                                                 and exists px (px.idpredmeta = ix.idpredmeta and px.naziv = 'Programiranje 1'))

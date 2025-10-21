@@ -1,0 +1,2 @@
+select INDEKS, IME, PREZIME
+from DA.DOSIJE

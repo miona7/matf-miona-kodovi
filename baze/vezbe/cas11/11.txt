@@ -1,0 +1,5 @@
+range of px is predmet
+range of py is predmet
+
+px.naziv, px.espb
+where forall py ( py.espb <= px.espb )

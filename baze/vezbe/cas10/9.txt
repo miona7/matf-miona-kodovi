@@ -1,0 +1,5 @@
+(((predmet where naziv = 'Analiza 1')[idpredmeta]
+join
+(ispit where ocena > 5))
+join
+ispitnirok)[naziv]

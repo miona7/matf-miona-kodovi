@@ -1,0 +1,7 @@
+range of dx is dosije
+range of ix is ispit
+range of px is predmet
+
+dx.indeks
+where forall px ( if exists ix ( ix.indeks = 20140025 and ix.ocena > 5 and ix.idpredmeta = px.idpredmeta )
+                    then exists ix ( ix.indeks = dx.indeks and ix.idpredmeta = px.idpredmeta and ix.ocena > 5 )

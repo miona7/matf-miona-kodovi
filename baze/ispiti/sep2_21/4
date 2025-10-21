@@ -1,0 +1,15 @@
+define alias p for predmet
+
+((((predmet join ispit)[idpredmeta, espb, naziv, indeks]
+divideby
+(dosije where mestorodjenja = 'Beograd')[indeks])
+times p) where predmet.espb = p.espb)[predmet.naziv, predmet.espb, p.naziv, p.espb]
+
+
+range of px, py is predmet
+range of ix is ispit
+range of dx is dosije
+
+px.naziv, px.espb, py.naziv, py.espb
+where px.espb = py.espb and forall dx ( if dx.mestorodjenja = 'Beograd'
+                                        then exists ix ( ix.idpredmeta = px.idpredmeta and ix.indeks = dx.indeks)))

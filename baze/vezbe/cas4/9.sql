@@ -1,0 +1,1 @@
+values dayname('3.11.2019');

@@ -1,0 +1,7 @@
+range of dx is dosije
+range of ix is ispit
+range of px is predmet
+
+px.naziv
+where px.espb = 6 and exists ix ( ix.idpredmeta = px.idpredmeta
+                                    and exists dx ( dx.indeks = i.indeks and dx.prezime = 'Vukovic' ) )

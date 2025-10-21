@@ -1,0 +1,14 @@
+(((dosije where mestorodjenja = 'Cacak') join (ispit where ocena > 5)) join predmet)[naziv]
+minus
+(((dosije where mestorodjenja = 'Beograd') join (ispit where ocena > 5)) join predmet)[naziv]
+
+
+range of dx is dosije
+range of px is predmet
+range of ix is ispit
+
+px.naziv
+where exists dx ( dx.mestorodjenja = 'Cacak' and
+                    exists ix( ix.indeks = dx.indeks and ix.idpredmeta = px.idepredmeta and ix.ocena > 5) )
+      and not exists dx ( dx.mestorodjenja = 'Beograd' and
+                     exists ix ( ix.indeks = dx.indeks and ix.idpredmeta = px.idpredmeta and ix.ocena > 5 ) )

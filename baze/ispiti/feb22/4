@@ -1,0 +1,15 @@
+((ispit[oznakaroka, skgodina, indeks, idpredmeta]
+divideby
+(predmet where espb = 6)[idpredmeta])[oznakaroka, skgodina, indeks]
+    join (dosije where mestorodjenja = 'Beograd'))[oznakaroka, skgodina] join ispitnirok
+
+range of ix is ispit
+range of dx is dosije
+range of px is predmet
+range of irx is ispitnirok
+
+irx.skgodina, irx.oznakaroka
+where exists ix (ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka
+                    and exists dx (dx.mestorodjenja = 'Beograd' and dx.indeks = ix.indeks)))
+      and forall px (if px.espb = 6 then exists ix (ix.idpredmeta = px.idpredmeta
+                        and ix.skgodina = irx.skgodina and ix.oznakaroka = irx.oznakaroka) )

@@ -1,0 +1,5 @@
+range of ix is ispit
+range of px is predmet
+
+ix.indeks, px.naziv, ix.ocena
+where ix.idpredmeta = px.idpredmeta

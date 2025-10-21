@@ -1,0 +1,5 @@
+select ir1.NAZIV, ir2.NAZIV
+from DA.ISPIT i1 join DA.ISPIT i2 on i1.INDEKS = i2.INDEKS and i1.IDPREDMETA = i2.IDPREDMETA
+    and i1.DATPOLAGANJA < i2.DATPOLAGANJA and i1.STATUS not in ('p', 'n') and i2.STATUS not in ('p', 'n')
+    join DA.ISPITNIROK ir1 on ir1.SKGODINA = i1.SKGODINA and ir1.OZNAKAROKA = i1.OZNAKAROKA
+    join DA.ISPITNIROK ir2 on ir2.SKGODINA = i2.SKGODINA and ir2.OZNAKAROKA = i2.OZNAKAROKA

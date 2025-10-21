@@ -1,0 +1,3 @@
+select d.INDEKS, d.IME, d.PREZIME, i.IDPREDMETA, i.OCENA
+from DA.DOSIJE d join DA.ISPIT i on d.INDEKS = i.INDEKS
+where i.DATPOLAGANJA = '28.01.2016'

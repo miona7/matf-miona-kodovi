@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/20_21/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/20_21/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/20_21/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb22/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb22/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb22/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb23_1/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb23_1/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb23_1/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb23_2/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb23_2/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb24/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb24/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/feb24/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan2017/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan2017/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_1/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_1/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_1/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_2/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_2/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan21_2/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan22/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan22/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan22/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_1/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_1/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_1/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_2/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_2/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan23_24_2/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan24/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan24/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jan24/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun23/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun23/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun23/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun24/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun24/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/jun24/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep1_21/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep1_21/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep1_21/3.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep24/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep24/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep2_21/1.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep2_21/2.sql" dialect="DB2" />
+    <file url="file://$PROJECT_DIR$/sep2_21/3.sql" dialect="DB2" />
+    <file url="file://$USER_HOME$/Desktop/1.sql" dialect="DB2" />
+    <file url="PROJECT" dialect="DB2" />
+  </component>
+</project>

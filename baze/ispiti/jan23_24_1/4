@@ -1,0 +1,13 @@
+((dosije where mestorodjena = 'Jagodina') join (ispit where ocena = 10))[ime, prezime, mestorodjenja, indeks, idpredmeta]
+divideby
+((dosije where indeks = 20000001) join (ispit where ocena > 5))[idpredmeta]
+
+
+
+range of dx is dosije
+range of ix, iy, iz is ispit
+
+dx.ime, dx.prezime, dx.mestorodjenja, dx.indeks
+where dx.mestorodjenja = 'Jagodina' and exists iz ( iz.indeks = dx.indeks and iz.ocena = 10)
+    and forall ix ( ix.indeks = 20000001 and ocena > 5
+        exists iy ( iy.indeks = dx.indeks and iy.idpredmeta = ix.predmeta and iy.ocena > 5))

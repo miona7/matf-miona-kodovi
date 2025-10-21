@@ -1,0 +1,15 @@
+(predmet[naziv, idpredmeta]
+divideby
+((dosije where datupisa = '5.7.2018') join ispit)[idpredmeta])
+union
+(predmet join ((ispit where ocena > 5) join (dosije where mestorodjenja = 'Kraljevo')))[naziv]
+
+
+range of dx is dosije
+range of ix is ispit
+range of px is predmet
+
+px.naziv
+where exists dx (dx.mestorodjenja = 'Kraljevo'
+                    and exists ix (ix.indeks = dx.indeks and ix.idpredmeta = px.idpredmeta and ix.ocena > 5))
+      or forall dx (if dx.datupisa = '5.7.2018' then exists ix (ix.indeks = dx.indeks and ix.idpredmeta = px.idpredmeta))

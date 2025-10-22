@@ -25,7 +25,7 @@ The repository is organized by courses and programming languages:
   Code related to compiler construction, language parsing, and syntax analysis.
 
 - **Programske paradigme** – Haskell, Prolog, Scala, Python  
-  Examples and assignments exploring functional and declarative programming paradigms.  
+  Examples and assignments exploring functional, concurrent, distributed and declarative programming paradigms.  
 
 ---
 

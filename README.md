@@ -27,7 +27,7 @@ The repository is organized by courses and programming languages:
 - **Programske paradigme** – Haskell, Prolog, Scala, Python  
   Examples and assignments exploring functional, concurrent, distributed and declarative programming paradigms.
 
-  - **Istraživanje podataka 1** – Python, IBM SPSS Modeler  
+- **Istraživanje podataka 1** – Python, IBM SPSS Modeler  
   Exercises and projects focused on data preprocessing, exploratory data analysis, model building, and basic machine learning workflows using both Python and SPSS Modeler.
 
 ---

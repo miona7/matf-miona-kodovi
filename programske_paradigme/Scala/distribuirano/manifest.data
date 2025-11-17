@@ -1,0 +1,10 @@
+This is a simple test line.
+We will count letters correctly.
+Each thread will process some lines.
+Concurrency is important for performance.
+Unábomber's manifesto inspired many investigations.
+Crème brûlée is delicious, but ignore non-English letters.
+中文字符不应该被计数。
+Пример строки с русскими буквами.
+Numbers like 12345 and symbols #@$% should be ignored.
+Special characters: é, ü, ñ, å, ø, æ should not be counted.

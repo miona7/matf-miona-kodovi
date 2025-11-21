@@ -33,6 +33,9 @@ The repository is organized by courses and programming languages:
 - **Računarske mreže** – Java          
   Assignments covering core networking concepts, including the OSI model, TCP/IP protocols, socket programming, multithreading, client–server architecture,
   and simulations of network communication.
+
+- **Primena projektivne geometrije u računarstvu** - Python      
+  The repository contains a document with links to all the homework assignments for the course.
   
 ---
 

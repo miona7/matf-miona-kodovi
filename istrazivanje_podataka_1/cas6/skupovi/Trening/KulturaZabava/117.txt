@@ -1,0 +1,12 @@
+kamena 2
+q 1
+zastoj 1
+crnogorcu 1
+drzi 1
+krevetu 1
+legne 1
+ugasi 1
+svetlo 1
+proveriti 1
+zatvor 1
+prozor 2

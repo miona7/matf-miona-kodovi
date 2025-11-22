@@ -1,0 +1,16 @@
+znam 1
+dramani 1
+dosxao 1
+nije 1
+javi 1
+kasni 1
+aviona 1
+sastavu 1
+poslu 1
+trener 1
+crvenu 1
+zvezde 1
+valter 1
+zengi 1
+pos 1
+volim 2

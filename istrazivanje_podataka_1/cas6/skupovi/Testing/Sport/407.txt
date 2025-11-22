@@ -1,0 +1,7 @@
+majami 1
+detroit 1
+vejd 1
+nil 1
+haslem 1
+princ 1
+bilaps 2

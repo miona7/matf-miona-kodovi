@@ -1,0 +1,13 @@
+akcije 2
+poseduje 1
+porodici 1
+knezxevicx 1
+firme 1
+miroslava 1
+branko 1
+dusxan 1
+ponuda 1
+kupovinu 1
+cena 1
+knxigovodstvena 1
+vrednosti 1

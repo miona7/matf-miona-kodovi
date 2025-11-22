@@ -1,0 +1,12 @@
+kandidat 4
+vecxini 2
+glasova 4
+biracya 1
+glasalo 1
+plus 1
+gradonacyelnik 2
+krugu 4
+idu 1
+jednake 1
+istovremeno 1
+najvecxi 2

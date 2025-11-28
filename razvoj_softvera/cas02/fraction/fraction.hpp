@@ -37,8 +37,8 @@ namespace matf {
             void Reduce();
     };
 
-std::ostream& operator<<(std::ostream&, const Fraction&);
-std::istream& operator>>(std::istream&, Fraction&);
+    std::ostream& operator<<(std::ostream&, const Fraction&);
+    std::istream& operator>>(std::istream&, Fraction&);
 
 }
 

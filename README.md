@@ -30,7 +30,7 @@ The repository is organized by courses and programming languages:
 - **Istraživanje podataka 1** – Python (Jupyter Notebook), IBM SPSS Modeler  
   Exercises focused on data preprocessing, exploratory data analysis, model building, and basic machine learning workflows using both Python and SPSS Modeler.
 
-- **Razvoj softvera** - C++, Qt
+- **Razvoj softvera** - C++, Qt     
   Exercises focused on learning desktop application development with C++ and Qt
   
 - **Računarske mreže** – Java          

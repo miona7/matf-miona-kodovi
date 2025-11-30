@@ -1,4 +1,5 @@
 #include "student.hpp"
+#include <numeric>
 
 Student::Student(const std::string& index, const std::string& name, StudyProgram program, const std::vector<Grades>& grades) 
     : m_index(index), m_name(name), m_program(program), m_grades(grades) {}
@@ -6,10 +7,14 @@ Student::Student(const std::string& index, const std::string& name, StudyProgram
 Student::~Student() = default;
 
 double Student::gpa() const {
-    unsigned sum = 0;
-    for(auto g : m_grades) {
-        sum += grade(g);
-    }
+    unsigned sum = std::accumulate(m_grades.begin(), m_grades.end(), 0u, 
+                        [&](unsigned acc, Grades g) { 
+                            return acc + grade(g);
+                        }); // grade je metod klase pa moramo to i naglasiti sa & ili sa this
+    // unsigned sum = 0;
+    // for(auto g : m_grades) {
+    //     sum += grade(g);
+    // }
     return sum / static_cast<double>(m_grades.size());
 }
 

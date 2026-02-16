@@ -15,6 +15,7 @@ public class Server {
     public static final int PORT = 12345;
     public static final int BUFFER_SIZE = 1024;
 
+    private static final String SONGS_FILE = "/home/miona/IdeaProjects/ispiti/src/jan1_2023/zadatak3/trending_songs.txt";
     private static final List<String> SONGS = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -23,52 +24,58 @@ public class Server {
         try (DatagramSocket serverSocket = new DatagramSocket(PORT)) {
 
             int globalIndex = 0;
+            byte[] buffer = new byte[BUFFER_SIZE]; // za primanje zahteva od klijenta
+            byte[] responseBuffer; // za slanje odgovora
 
             while (true) {
-                byte[] buffer = new byte[BUFFER_SIZE];
                 DatagramPacket clientRequest = new DatagramPacket(buffer, BUFFER_SIZE);
                 serverSocket.receive(clientRequest);
 
-                String request = (new String(clientRequest.getData(),
-                        0,
-                        clientRequest.getLength(),
-                        StandardCharsets.UTF_8)).trim();
-                if (request.equals("-1")) {
-                    byte[] response = SONGS.get(globalIndex).getBytes(StandardCharsets.UTF_8);
-                    DatagramPacket responsePacket = new DatagramPacket(response, response.length, clientRequest.getAddress(), clientRequest.getPort());
-                    serverSocket.send(responsePacket);
-                    globalIndex = (globalIndex + 1) % SONGS.size();
-                } else {
-                    String[] command = request.split(" ");
-                    String commandName = command[0].trim();
-                    if (commandName.equals("next") && command.length == 2) {
-                        int index = Integer.parseInt(command[1]);
-                        if (index == -1 || index >= SONGS.size()) {
-                            index = globalIndex;
-                            globalIndex = (globalIndex + 1) % SONGS.size();
-                        }
+                String requestedIndex = (new String(clientRequest.getData(), 0, clientRequest.getLength(), StandardCharsets.UTF_8)).trim();
+                // System.out.println("Requested index " + requestedIndex);
 
-                        byte[] response = SONGS.get(index).getBytes(StandardCharsets.UTF_8);
-                        DatagramPacket responsePacket = new DatagramPacket(response, response.length, clientRequest.getAddress(),  clientRequest.getPort());
-                        serverSocket.send(responsePacket);
+                if (requestedIndex.equals("-1")) {
+                    String responseSong = SONGS.get(globalIndex);
+                    globalIndex = (globalIndex + 1) % SONGS.size();
+                    // System.out.println("Response: " + responseSong);
+
+                    responseBuffer = responseSong.getBytes(StandardCharsets.UTF_8);
+                    DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length, clientRequest.getAddress(), clientRequest.getPort());
+
+                    serverSocket.send(responsePacket);
+                } else {
+                    int index = Integer.parseInt(requestedIndex);
+                    if (index >= SONGS.size()) {
+                        index = globalIndex;
+                        globalIndex = (globalIndex + 1) % SONGS.size();
                     }
+
+                    String responseSong = SONGS.get(index);
+                    // System.out.println("Response: " + responseSong);
+
+                    responseBuffer = responseSong.getBytes(StandardCharsets.UTF_8);
+                    DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length, clientRequest.getAddress(), clientRequest.getPort());
+
+                    serverSocket.send(responsePacket);
                 }
             }
 
         } catch (SocketException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
     }
 
     private static void loadSongs() {
-        try (Scanner in = new Scanner(new File("/home/miona/IdeaProjects/ispiti/src/jan1_2023/zadatak3/trending_songs.txt"))) {
+        try (Scanner in = new Scanner(new File(SONGS_FILE))) {
             while (in.hasNextLine()) {
                 SONGS.add(in.nextLine());
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

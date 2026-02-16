@@ -1,0 +1,13 @@
+Ukupan broj dostupnih domena: 0
+Ukupan broj nedostupnih domena: 5
+
+Dostupni domeni sa vremenom odziva:
+google.com - 0ms
+yahoo.com - 1ms
+openai.com - 2ms
+facebook.com - 3ms
+
+Top 3 najbrza domena:
+google.com - 0ms
+yahoo.com - 1ms
+openai.com - 2ms

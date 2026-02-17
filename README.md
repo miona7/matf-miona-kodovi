@@ -40,6 +40,9 @@ The repository is organized by courses and programming languages:
 - **Primena projektivne geometrije u računarstvu** - Python      
   The repository contains a document with links to all the homework assignments for the course.
 
+- **Alati za razvoj softvera** - Git, CMake, Valgrind, Callgrind, Docker, Clang (format & tidy), Gcov/Lcov, Doxygen, Bash    
+  Exercises and assignments focused on using modern tools and technologies for software development.
+
 ---
 
 💡 *Feel free to explore or use these examples for learning purposes.*

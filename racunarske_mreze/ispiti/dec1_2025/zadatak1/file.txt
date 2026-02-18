@@ -1,0 +1,2 @@
+Ovo je neki fajl.
+Citam ga pomocu klasa URL i URLConnection

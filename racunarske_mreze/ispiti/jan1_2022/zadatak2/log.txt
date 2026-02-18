@@ -1,0 +1,6 @@
+17:35:07.764556: Korisnik miona je odradio zadatak sudovi.
+17:35:09.453306: Korisnik miona je odradio zadatak ves.
+17:35:14.299579: Korisnik miona je dodao zadatak setnja.
+17:35:17.110444: Korisnik miona je odradio zadatak kupovina.
+17:35:18.892408: Korisnik miona je odradio zadatak rucak.
+17:35:20.669416: Korisnik miona je odradio zadatak ciscenje.

@@ -3,3 +3,6 @@ a.out
 *.o
 build/
 log.txt
+.idea
+out
+*.iml

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(MyProject VERSION 1.0.0)
 
+# dodaje lokalni folder u listu foldera gde CMake trazi module (.cmake fajlove)
+# omogucava da koristimom dodatne skripte poput CodeCoverage.cmake
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 enable_testing()
@@ -23,6 +25,7 @@ add_test(
 
 if(CMAKE_COMPILER_IS_GNUCXX)
     include(CodeCoverage)
+    # pravi poseban make target koji automatski pokrece testove i generise izvestaj
     SETUP_TARGET_FOR_COVERAGE_LCOV(
         NAME coverage 
         EXECUTABLE runTest

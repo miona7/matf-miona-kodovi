@@ -1,0 +1,13 @@
+version: '3.8'
+
+# servisi koje zelimo da pokrenemo
+services:
+  numpy-service:
+    build: 
+      # navodimo folder u kojem se nalaze Dockerfile-ovi
+      context: .
+      # navodimo koji Dockerfile zelimo da koristimo, posto u istom folderu imamo vise Dockerfile-ova
+      dockerfile: Dockerfile.numpy
+    volumes:
+      # mapiramo lokalni folder u folder /primer03/src unutar kontejnera
+      - ./:/primer03/src

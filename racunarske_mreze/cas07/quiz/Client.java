@@ -1,56 +1,36 @@
 package quiz;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
+import java.net.InetAddress;
+import java.util.Objects;
 
-// ne radi!!!
 public class Client {
-    public static void main(String[] args) {
-        try (DatagramSocket socket = new DatagramSocket();
-             Scanner scanner = new Scanner(System.in)) {
+    private InetAddress address;
+    private int port;
 
-            socket.setSoTimeout(5000);
-            String line = scanner.nextLine();
-            byte[] buffer = line.getBytes(); // za slanje odgovora klijentu
-            DatagramPacket request = new DatagramPacket(buffer, buffer.length, socket.getLocalAddress(), Server.PORT);
-            socket.send(request);
+    Client(InetAddress address, int port) {
+        this.address = address;
+        this.port = port;
+    }
 
-            while (true) {
-                try {
+    public InetAddress getAddress() {
+        return address;
+    }
 
-                    byte[] bufferResponse = new byte[Server.BUFFER_SIZE];
-                    DatagramPacket response = new DatagramPacket(bufferResponse, bufferResponse.length);
-                    socket.receive(response);
+    public int getPort() {
+        return port;
+    }
 
-                    String responseString = (new String(response.getData(), 0, response.getLength(), StandardCharsets.UTF_8)).trim();
-
-                    System.out.println(responseString);
-
-                    if (responseString.equals("Tacno") || responseString.equals("Netcno")) {
-                        break;
-                    }
-
-                    line = scanner.nextLine();
-                    buffer = line.getBytes(); // za slanje odgovora klijentu
-                    request = new DatagramPacket(buffer, buffer.length, socket.getLocalAddress(), Server.PORT);
-                    socket.send(request);
-
-                } catch (SocketTimeoutException e) {
-                    break;
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-        } catch (SocketException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
         }
+        Client client = (Client) obj;
+        return this.address.equals(client.address) && this.port == client.port;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, port);
     }
 }

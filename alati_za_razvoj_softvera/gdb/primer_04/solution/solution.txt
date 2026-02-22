@@ -1,0 +1,6 @@
+voronoi.cpp:
+- linija 31: nedostaje ".txt" ekstenzija za generisane datoteke
+- linija 47: treba p.label umesto curr_point.label
+ 
+voronoi.hpp:
+- linija 21: pogresno se racuna euklidsko rastojanje

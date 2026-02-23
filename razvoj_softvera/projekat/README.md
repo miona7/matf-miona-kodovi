@@ -20,3 +20,5 @@ AlgoVision is a team-based software engineering project developed as part of the
 - Generating and maintaining Doxygen documentation
 - Resolving merge conflicts and maintaining repository consistency
 
+### Project Outcome
+- Achieved **full marks (40/40)** ✨

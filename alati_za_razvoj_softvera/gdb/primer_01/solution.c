@@ -17,5 +17,7 @@ int main() {
     Node* n = newNode(5);
     printf("%d\n", n->value);
 
+    free(n);
+
     return 0;
 }

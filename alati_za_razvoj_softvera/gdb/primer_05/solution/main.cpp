@@ -177,17 +177,17 @@ int main()
     // for(Process* p: pipeline)
     //     p->process();
 
-    Process* p1 = new AggregatorSum(data, 5);
-    p1->process();
-    data = p1->getData();
+    AggregatorSum p1(data, 5);
+    p1.process();
+    data = p1.getData();
 
-    Process* p2 = new AggregatorMean(data, 5);
-    p2->process();
-    data = p2->getData();
+    AggregatorMean p2(data, 5);
+    p2.process();
+    data = p2.getData();
 
-    Process* p3 = new Sorter(data);
-    p3->process();
-    data = p3->getData();
+    Sorter p3(data);
+    p3.process();
+    data = p3.getData();
 
     auto file = std::ofstream("expected_result.txt");
 

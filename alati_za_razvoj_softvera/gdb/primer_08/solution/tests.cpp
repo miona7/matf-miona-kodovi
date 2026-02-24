@@ -65,6 +65,9 @@ namespace {
         for(size_t i = 0; i < expected.size(); ++i){
             assert(expected[i] == result[i]);
         }
+
+        // memory leak fix
+        delete p;
     }
 
 
@@ -110,6 +113,11 @@ namespace {
         assert(expected.size() == result.size());
         for(size_t i = 0; i < expected.size(); ++i){
             assert(expected[i] == result[i]);
+        }
+
+        // memory leak fix
+        for(auto n : names) {
+            delete n;
         }
     }
 }

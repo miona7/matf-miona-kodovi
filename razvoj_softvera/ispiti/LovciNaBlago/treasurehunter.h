@@ -11,7 +11,7 @@ public:
     TreasureHunter(const QVariant&);
 
     void fromQVariant(const QVariant&);
-    QString toString() const;
+    QString toQString() const;
 
 private:
     QString m_name;

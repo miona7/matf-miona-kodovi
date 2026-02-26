@@ -17,6 +17,6 @@ void TreasureHunter::fromQVariant(const QVariant& variant) {
     m_position = {row, column};
 }
 
-QString TreasureHunter::toString() const {
+QString TreasureHunter::toQString() const {
     return m_name + ", brzina: " + QString::number(m_speed) + ", novcica: " + QString::number(m_numOfDucats);
 }

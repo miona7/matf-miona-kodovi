@@ -20,3 +20,19 @@ void TreasureHunter::fromQVariant(const QVariant& variant) {
 QString TreasureHunter::toQString() const {
     return m_name + ", brzina: " + QString::number(m_speed) + ", novcica: " + QString::number(m_numOfDucats);
 }
+
+unsigned TreasureHunter::getSpeed() const {
+    return m_speed;
+}
+
+void TreasureHunter::addDucats(unsigned ducats) {
+    m_numOfDucats += ducats;
+}
+
+QPair<unsigned, unsigned> TreasureHunter::getPosition() const {
+    return m_position;
+}
+
+void TreasureHunter::setPosition(const QPair<unsigned, unsigned>& pos) {
+    m_position = pos;
+}

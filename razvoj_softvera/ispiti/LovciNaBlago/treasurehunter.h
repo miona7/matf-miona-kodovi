@@ -12,6 +12,12 @@ public:
 
     void fromQVariant(const QVariant&);
     QString toQString() const;
+    unsigned getSpeed() const;
+
+    void addDucats(unsigned);
+
+    QPair<unsigned, unsigned> getPosition() const;
+    void setPosition(const QPair<unsigned, unsigned>&);
 
 private:
     QString m_name;

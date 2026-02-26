@@ -37,10 +37,22 @@ bool Robot::isDead() const {
     return m_currLifePoints == 0;
 }
 
+unsigned Robot::getMaxLifePoints() const {
+    return m_maxLifePoints;
+}
+
 unsigned Robot::getCurrLifePoints() const {
     return m_currLifePoints;
 }
 
 void Robot::setCurrLifePoints(unsigned points) {
     m_currLifePoints = points;
+}
+
+QMutex* Robot::getBattleMutex() {
+    return &m_battleMutex;
+}
+
+QString Robot::getName() const {
+    return m_name;
 }

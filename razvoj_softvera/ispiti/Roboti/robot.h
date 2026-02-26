@@ -4,6 +4,7 @@
 #include <QString>
 #include <QVariant>
 #include <QRandomGenerator>
+#include <QMutex>
 
 class Robot {
 public:
@@ -16,8 +17,13 @@ public:
 
     bool isDead() const;
 
+    unsigned getMaxLifePoints() const;
+
     unsigned getCurrLifePoints() const;
     void setCurrLifePoints(unsigned);
+
+    QMutex* getBattleMutex();
+    QString getName() const;
 
 private:
     QString m_name;
@@ -25,6 +31,7 @@ private:
     unsigned m_maxStrengthAttack;
     unsigned m_maxLifePoints;
     unsigned m_currLifePoints;
+    QMutex m_battleMutex;
 };
 
 #endif // ROBOT_H

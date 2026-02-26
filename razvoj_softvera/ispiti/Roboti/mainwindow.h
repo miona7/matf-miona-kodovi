@@ -6,8 +6,10 @@
 #include <QFileDialog>
 #include <QJsonDocument>
 #include <QList>
+#include <QThread>
 
 #include "robot.h"
+#include "robotworker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,14 +27,17 @@ public:
 private slots:
     void onLoadRobotsClicked();
     void onBeginBattlesClicked();
+    void setBattleWinner(int, int);
 
 private:
     Ui::MainWindow* m_ui;
     QList<Robot*> m_robots;
+    int m_numOfUnfinishedBattles = 0;
 
     void loadRobots();
     void fillRobotsList();
     void initBattleTable();
     void startThreads();
+    void setCompetitionWinner();
 };
 #endif // MAINWINDOW_H

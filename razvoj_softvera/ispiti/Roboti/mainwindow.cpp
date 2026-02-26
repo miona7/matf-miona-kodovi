@@ -36,6 +36,19 @@ void MainWindow::onBeginBattlesClicked() {
     startThreads();
 }
 
+void MainWindow::setBattleWinner(int winner, int loser) {
+    m_ui->twRobotsTable->item(winner, loser)->setText("Pobedio");
+    m_ui->twRobotsTable->item(loser, winner)->setText("Izgubio");
+
+    m_numOfUnfinishedBattles--;
+
+    if(m_numOfUnfinishedBattles == 0) {
+        setCompetitionWinner();
+        m_ui->pbLoadRobots->setEnabled(true);
+        m_ui->pbBeginBattles->setEnabled(true);
+    }
+}
+
 void MainWindow::loadRobots() {
     QString fileName = QFileDialog::getOpenFileName(this, "select robot file", "", "*.json");
     if(fileName.isEmpty()) {
@@ -90,4 +103,37 @@ void MainWindow::initBattleTable() {
 }
 
 void MainWindow::startThreads() {
+    int numOfRobots = m_robots.size();
+
+    for(int i = 0; i < numOfRobots; ++i) {
+        for(int j = i+1; j < numOfRobots; ++j) {
+            auto* worker = new RobotWorker(m_robots[i], m_robots[j], i, j);
+            worker->start();
+            connect(worker, &QThread::finished, worker, &QObject::deleteLater);
+            connect(worker, &RobotWorker::battleFinished, this, &MainWindow::setBattleWinner);
+            m_numOfUnfinishedBattles++;
+        }
+    }
 }
+
+void MainWindow::setCompetitionWinner() {
+    int maxNumOfWins = 0;
+    int bestInx = -1;
+
+    int numOfRobots = m_robots.size();
+    for(int i = 0; i < numOfRobots; ++i) {
+        int numOfWins = 0;
+        for(int j = 0; j < numOfRobots; ++j) {
+            if(m_ui->twRobotsTable->item(i, j)->text() == "Pobedio") {
+                numOfWins++;
+            }
+        }
+        if(numOfWins > maxNumOfWins) {
+            maxNumOfWins = numOfWins;
+            bestInx = i;
+        }
+    }
+
+    m_ui->leMostWins->setText(m_robots[bestInx]->getName());
+}
+

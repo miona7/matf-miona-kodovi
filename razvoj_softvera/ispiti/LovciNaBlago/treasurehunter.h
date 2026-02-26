@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVariant>
+#include <QPair>
 
 class TreasureHunter {
 public:
@@ -16,7 +17,7 @@ private:
     QString m_name;
     unsigned m_speed;
     unsigned m_numOfDucats;
-    std::pair<unsigned, unsigned> m_position;
+    QPair<unsigned, unsigned> m_position;
 };
 
 #endif // TREASUREHUNTER_H

@@ -76,8 +76,8 @@ void MainWindow::showMap() {
     m_ui->twMap->setRowCount(rows);
     m_ui->twMap->setColumnCount(columns);
 
-    for(int i = 0; i < rows; ++i) {
-        for(int j = 0; j < columns; ++j) {
+    for(unsigned i = 0; i < rows; ++i) {
+        for(unsigned j = 0; j < columns; ++j) {
             auto* tableItem = new QTableWidgetItem();
 
             const auto tile = m_map.getTileAt({i, j});

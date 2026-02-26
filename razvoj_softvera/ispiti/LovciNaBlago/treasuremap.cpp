@@ -28,3 +28,14 @@ void TreasureMap::fromQVariant(const QVariant& variant) {
         }
     }
 }
+
+QPair<int, int> TreasureMap::getMapSize() const {
+    if(m_tiles.isEmpty()) {
+        return {0, 0};
+    }
+    return {m_tiles.size(), m_tiles[0].size()};
+}
+
+TreasureMap::Tile TreasureMap::getTileAt(const QPair<int, int>& pos) const {
+    return m_tiles[pos.first][pos.second];
+}

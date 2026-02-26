@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QPushButton" name="pbZapocniBorbe">
+       <widget class="QPushButton" name="pbBeginBattles">
         <property name="text">
          <string>Zapocni borbe</string>
         </property>
@@ -32,7 +32,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget"/>
+       <widget class="QTableWidget" name="twRobotsTable"/>
       </item>
       <item>
        <spacer name="verticalSpacer_2">
@@ -55,14 +55,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="leNajvisePobeda"/>
+       <widget class="QLineEdit" name="leMostWins"/>
       </item>
      </layout>
     </item>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QPushButton" name="pbUcitajRobote">
+       <widget class="QPushButton" name="pbLoadRobots">
         <property name="text">
          <string>Ucitaj robote</string>
         </property>
@@ -76,7 +76,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="listWidget"/>
+       <widget class="QListWidget" name="lwRobotsList"/>
       </item>
       <item>
        <spacer name="verticalSpacer">
@@ -99,7 +99,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="leBrojRobota"/>
+       <widget class="QLineEdit" name="leNumOfRobots"/>
       </item>
      </layout>
     </item>
@@ -118,10 +118,10 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>pbUcitajRobote</tabstop>
-  <tabstop>listWidget</tabstop>
-  <tabstop>tableWidget</tabstop>
-  <tabstop>pbZapocniBorbe</tabstop>
+  <tabstop>pbLoadRobots</tabstop>
+  <tabstop>lwRobotsList</tabstop>
+  <tabstop>twRobotsTable</tabstop>
+  <tabstop>pbBeginBattles</tabstop>
  </tabstops>
  <resources/>
  <connections/>

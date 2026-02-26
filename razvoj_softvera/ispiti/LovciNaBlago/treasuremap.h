@@ -12,7 +12,6 @@ public:
     enum class Tile { Clear, Wall, Treasure };
 
     TreasureMap() = default;
-    TreasureMap(const QVariant&);
 
     void fromQVariant(const QVariant&);
 

@@ -15,10 +15,6 @@ namespace {
     }
 }
 
-TreasureMap::TreasureMap(const QVariant& variant) {
-    fromQVariant(variant);
-}
-
 void TreasureMap::fromQVariant(const QVariant& variant) {
     m_tiles.clear();
 

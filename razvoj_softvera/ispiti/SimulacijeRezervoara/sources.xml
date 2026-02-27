@@ -1,0 +1,23 @@
+<?xml version ="1.0" encoding ="UTF-8"?>
+<sources type=" QVariantList ">
+    <source type=" QVariantMap ">
+        <volume type="uint" >1240</volume>
+        <name type=" QString ">Јuzni cevovod</name>
+    </source>
+    <source type=" QVariantMap ">
+        <volume type="uint" >1426</volume>
+        <name type=" QString ">Mreza slavina</name>
+    </source>
+    <source type=" QVariantMap ">
+        <volume type="uint" >626</volume>
+        <name type=" QString ">Pokretna cisterna</name>
+    </source>
+    <source type=" QVariantMap ">
+        <volume type="uint" >1434</volume>
+        <name type=" QString ">Severni cevovod</name>
+    </source>
+    <source type=" QVariantMap ">
+        <volume type="uint" >726</volume>
+        <name type=" QString ">Podzemni izvori</name>
+    </source>
+</sources>

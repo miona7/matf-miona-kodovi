@@ -1,0 +1,18 @@
+{
+    "name" : "Beograd",
+    "coordinates" : [4,5],
+    "articles" : [
+        "mleko",
+        "mleko",
+        "hleb",
+        "hleb",
+        "jaja",
+        "jaja",
+        "brasno",
+        "brasno",
+        "ulje",
+        "ulje",
+        "svinjetina",
+        "piletina"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "name" : "Novi Sad",
+    "coordinates" : [3,6],
+    "articles" : [
+        "brasno",
+        "brasno",
+        "brasno",
+        "paradajz",
+        "paradajz",
+        "kukuruz",
+        "kukuruz",
+        "jaja",
+        "jaja",
+        "jaja",
+        "ulje"
+    ]
+}

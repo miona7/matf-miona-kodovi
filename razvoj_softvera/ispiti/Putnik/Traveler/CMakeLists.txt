@@ -23,6 +23,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Putnik
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        city.h city.cpp
+        travelerworker.h travelerworker.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Putnik APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

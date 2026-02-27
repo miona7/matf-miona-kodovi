@@ -21,8 +21,20 @@ QString TreasureHunter::toQString() const {
     return m_name + ", brzina: " + QString::number(m_speed) + ", novcica: " + QString::number(m_numOfDucats);
 }
 
+QString TreasureHunter::getName() const {
+    return m_name;
+}
+
 unsigned TreasureHunter::getSpeed() const {
     return m_speed;
+}
+
+void TreasureHunter::setDucats(unsigned ducats) {
+    m_numOfDucats = ducats;
+}
+
+unsigned TreasureHunter::getDucats() const {
+    return m_numOfDucats;
 }
 
 void TreasureHunter::addDucats(unsigned ducats) {

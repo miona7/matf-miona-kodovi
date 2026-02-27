@@ -12,7 +12,11 @@ public:
 
     void fromQVariant(const QVariant&);
     QString toQString() const;
+    QString getName() const;
     unsigned getSpeed() const;
+
+    void setDucats(unsigned);
+    unsigned getDucats() const;
 
     void addDucats(unsigned);
 

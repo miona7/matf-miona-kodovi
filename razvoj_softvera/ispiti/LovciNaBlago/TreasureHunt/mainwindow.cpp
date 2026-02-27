@@ -32,6 +32,46 @@ void MainWindow::onBeginHuntingClicked() {
     m_ui->pbLoadData->setDisabled(true);
     m_ui->pbBeginHunting->setDisabled(true);
     m_ui->sbSpeed->setDisabled(true);
+
+    m_numOfWorkers = 0;
+    for(unsigned i = 0; i < m_hunters.size(); i++) {
+        auto* worker = new HunterWorker(&m_hunters, i, &m_mutex, &m_map, m_ui->sbSpeed->value());
+        m_numOfWorkers++;
+
+        connect(worker, &HunterWorker::hunterMoved, this, &MainWindow::onHunterMoved);
+        connect(worker, &HunterWorker::hunterFoundTreasure, this, &MainWindow::onHunterFoundTreasure);
+
+        connect(worker, &QThread::finished, this, &MainWindow::onHunterThreadFinished);
+        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
+
+        worker->start();
+    }
+}
+
+void MainWindow::onHunterMoved(QPair<unsigned, unsigned> from, QPair<unsigned, unsigned> to) {
+    const auto tag = m_ui->twMap->item(from.first, from.second)->text();
+    m_ui->twMap->item(from.first, from.second)->setText("");
+    m_ui->twMap->item(to.first, to.second)->setText(tag);
+}
+
+void MainWindow::onHunterFoundTreasure(unsigned index) {
+    m_ui->lwHuntersList->item(index)->setText(m_hunters[index]->toQString());
+}
+
+void MainWindow::onHunterThreadFinished() {
+    m_numOfWorkers--;
+    if(m_numOfWorkers == 0) {
+        m_ui->pbLoadData->setEnabled(true);
+        m_ui->pbBeginHunting->setEnabled(true);
+        m_ui->sbSpeed->setEnabled(true);
+
+        const auto winner = *std::max_element(m_hunters.begin(), m_hunters.end(), [](const auto& l, const auto& r) {
+            return l->getDucats() < r->getDucats();
+        });
+
+        const auto mess = "Pobednik je " + winner->getName() + ", sa " + QString::number(winner->getDucats()) + " novcica!";
+        QMessageBox::information(this, "Pobednik!", mess);
+    }
 }
 
 void MainWindow::loadData() {
@@ -76,8 +116,8 @@ void MainWindow::showMap() {
     m_ui->twMap->setRowCount(rows);
     m_ui->twMap->setColumnCount(columns);
 
-    for(unsigned i = 0; i < rows; ++i) {
-        for(unsigned j = 0; j < columns; ++j) {
+    for(unsigned i = 0; i < rows; i++) {
+        for(unsigned j = 0; j < columns; j++) {
             auto* tableItem = new QTableWidgetItem();
 
             const auto tile = m_map.getTileAt({i, j});
@@ -91,8 +131,13 @@ void MainWindow::showMap() {
             default:
                 break;
             }
-
             m_ui->twMap->setItem(i, j, tableItem);
         }
+    }
+
+    for(const auto& h : m_hunters) {
+        const auto [row, col] = h->getPosition();
+        const auto name = h->getName();
+        m_ui->twMap->item(row, col)->setText(name.isEmpty() ? "?" : name.sliced(0, 1));
     }
 }

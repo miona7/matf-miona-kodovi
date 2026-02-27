@@ -1,22 +1,32 @@
 #include "hunterworker.h"
 
-HunterWorker::HunterWorker(TreasureHunter* hunter, TreasureMap* map, double gameSpeed)
-    : m_hunter(hunter), m_map(map), m_gameSpeed(gameSpeed) {
+HunterWorker::HunterWorker(QList<TreasureHunter*>* hunters, unsigned index, QMutex* mutex, TreasureMap* map, double gameSpeed)
+    : m_hunters(hunters), m_index(index), m_mutex(mutex), m_map(map), m_gameSpeed(gameSpeed) {
 }
 
 void HunterWorker::run() {
-    while(m_map->hasDucats()) {
-        QThread::msleep(100 / (m_hunter->getSpeed() * m_gameSpeed) * 1000);
+    TreasureHunter* hunter = (*m_hunters)[m_index];
 
-        auto positions = m_map->getMovableFrom(m_hunter->getPosition());
+    while(m_map->hasDucats()) {
+        QThread::msleep(100 / (hunter->getSpeed() * m_gameSpeed) * 1000);
+
+        QMutexLocker lock(m_mutex);
+
+        auto positions = m_map->getMovableFrom(hunter->getPosition());
+        for(const auto& h : *m_hunters) {
+            positions.removeIf([&h](const auto& pos) {
+                return h->getPosition() == pos;
+            });
+        }
 
         if(!positions.empty()) {
             const auto move = positions[QRandomGenerator::global()->bounded(positions.size())];
-            // emit hunterMoved();
-            m_hunter->setPosition(move);
+            emit hunterMoved(hunter->getPosition(), move);
+            hunter->setPosition(move);
 
             if(m_map->grabTreasure(move)) {
-                m_hunter->addDucats(QRandomGenerator::global()->bounded(1, 6));
+                hunter->addDucats(QRandomGenerator::global()->bounded(1, 6));
+                emit hunterFoundTreasure(m_index);
             }
         }
     }

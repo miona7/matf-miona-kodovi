@@ -51,13 +51,13 @@ QList<QPair<unsigned, unsigned>> TreasureMap::getMovableFrom(const QPair<unsigne
     if(row > 0 && m_tiles[row - 1][column] != TreasureMap::Tile::Wall) {
         positions.append({row - 1, column});
     }
-    if(row < m_tiles.size() && m_tiles[row + 1][column] != TreasureMap::Tile::Wall) {
+    if(row < m_tiles.size() - 1 && m_tiles[row + 1][column] != TreasureMap::Tile::Wall) {
         positions.append({row + 1, column});
     }
     if(column > 0 && m_tiles[row][column - 1] != TreasureMap::Tile::Wall) {
         positions.append({row, column - 1});
     }
-    if(column < m_tiles[row].size() && m_tiles[row][column + 1] != TreasureMap::Tile::Wall) {
+    if(column < m_tiles[row].size() - 1 && m_tiles[row][column + 1] != TreasureMap::Tile::Wall) {
         positions.append({row, column + 1});
     }
 

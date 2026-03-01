@@ -1,0 +1,21 @@
+[
+  {
+    "ime": "Novak",
+    "klub": "Crvena Zvezda",
+    "preciznost": 0.85
+  },
+  {
+    "ime": "Marko",
+    "klub": "Partizan",
+    "preciznost": 0.65
+  },
+  {
+    "ime": "Ana",
+    "preciznost": 0.90
+  },
+  {
+    "ime": "Jelena",
+    "klub": "Radnicki",
+    "preciznost": 0.75
+  }
+]

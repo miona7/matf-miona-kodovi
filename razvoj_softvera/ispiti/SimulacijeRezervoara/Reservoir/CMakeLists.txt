@@ -23,6 +23,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Reservoir
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        source.h source.cpp
+        transferworker.h transferworker.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Reservoir APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

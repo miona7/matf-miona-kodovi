@@ -1,10 +1,10 @@
 # 🎓 Miona – MATF Code Repository
 
-This repository contains a collection of code I’ve written while studying at the **Faculty of Mathematics, University of Belgrade**.  
+This repository contains a collection of code I’ve written while studying at the **Faculty of Mathematics, University of Belgrade** 📚.  
 
-It includes **exercises and assignments** completed as part of different computer science courses, as well as additional practice work I did to strengthen my understanding of programming concepts.
+It includes **exercises and assignments** completed as part of different computer science courses, as well as additional practice work I did to strengthen my understanding of programming concepts 🧠.
 
-The goal of this repository is to keep all my university-related code organized in one place.
+The goal of this repository is to keep all my university-related code organized in one place 🗂️.
 
 ---
 

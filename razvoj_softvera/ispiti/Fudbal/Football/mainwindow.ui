@@ -37,7 +37,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="sbNumOfTry">
+         <widget class="QSpinBox" name="sbNumOfTries">
           <property name="minimum">
            <number>1</number>
           </property>
@@ -68,7 +68,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Igraci sa brojem pokusaja manjim od medijane</string>
+         <string>Igraci sa brojem bodova manjim od medijane</string>
         </property>
        </widget>
       </item>

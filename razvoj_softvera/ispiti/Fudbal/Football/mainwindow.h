@@ -9,6 +9,7 @@
 #include <QMessageBox>
 
 #include "competitor.h"
+#include "competitorworker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,10 +26,15 @@ public:
 
 public slots:
     void onLoad();
+    void onBeginMatch();
+
+    void onGoal(bool, unsigned);
+    void onFinish();
 
 private:
     Ui::MainWindow* m_ui;
     QList<Competitor*> m_competitors;
+    unsigned m_numOfWorkers;
 
     void loadCompetitors();
     void showCompetitors();

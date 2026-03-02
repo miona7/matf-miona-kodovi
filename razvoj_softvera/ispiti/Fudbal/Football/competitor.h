@@ -12,6 +12,10 @@ public:
     void fromQVariant(const QVariant&);
     QString toQString() const;
 
+    QString getName() const;
+    double getPrecision() const;
+    void addPoints(unsigned);
+
 private:
     QString m_name;
     QString m_club;

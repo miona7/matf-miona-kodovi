@@ -20,3 +20,15 @@ void Competitor::fromQVariant(const QVariant& variant) {
 QString Competitor::toQString() const {
     return m_name + ", " + m_club + ", " + QString::number(m_points);
 }
+
+QString Competitor::getName() const {
+    return m_name;
+}
+
+double Competitor::getPrecision() const {
+    return m_precision;
+}
+
+void Competitor::addPoints(unsigned points) {
+    m_points += points;
+}

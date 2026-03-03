@@ -1,10 +1,8 @@
 # Qt Simulator Takmičenja 🎯
 
----
-
 ## ⚠️ Napomena
 
-Nemam originalnu kompletnu postavku zadatka. Implementacija predstavlja približno rešenje traženog zadatka.
+Nemam originalnu kompletnu postavku zadatka. Implementacija predstavlja približno rešenje traženog zadatka. Najverovatnije je bila i neophodna upotreba QMutexa, koju ja ovde nemam.
 
 ---
 
@@ -58,7 +56,7 @@ Kada ostane jedan učesnik, aplikacija prikazuje poruku sa pobednikom.
 
 ## 🛠 Tehničke karakteristike
 
-* Qt GUI (`QListWidget`, `QPushButton`, `QSpinBox`)
+* Qt GUI (`QListWidget`, `QPushButton`, `QSpinBox`, `QMessageBox`)
 * Rad sa `QThread` klasom
 * Signal–slot komunikacija između niti i glavne niti
 * Parsiranje JSON fajlova

@@ -29,6 +29,14 @@ double Competitor::getPrecision() const {
     return m_precision;
 }
 
+unsigned Competitor::getPoints() const {
+    return m_points;
+}
+
+void Competitor::setPoints(unsigned points) {
+    m_points = points;
+}
+
 void Competitor::addPoints(unsigned points) {
     m_points += points;
 }

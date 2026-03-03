@@ -8,6 +8,9 @@
 #include <QJsonDocument>
 #include <QMessageBox>
 
+#include <vector>
+#include <algorithm>
+
 #include "competitor.h"
 #include "competitorworker.h"
 
@@ -38,5 +41,7 @@ private:
 
     void loadCompetitors();
     void showCompetitors();
+    void removeAndShowCompetitorsMedian();
+    unsigned calculateMedian() const;
 };
 #endif // MAINWINDOW_H

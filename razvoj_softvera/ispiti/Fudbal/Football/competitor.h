@@ -14,6 +14,9 @@ public:
 
     QString getName() const;
     double getPrecision() const;
+
+    unsigned getPoints() const;
+    void setPoints(unsigned);
     void addPoints(unsigned);
 
 private:

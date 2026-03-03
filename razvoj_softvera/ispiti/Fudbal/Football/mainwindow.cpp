@@ -27,6 +27,10 @@ void MainWindow::onBeginMatch() {
     m_ui->pbLoad->setDisabled(true);
     m_ui->pbBeginMatch->setDisabled(true);
 
+    for(auto& c : m_competitors) {
+        c->setPoints(0);
+    }
+
     unsigned numOfTries = m_ui->sbNumOfTries->value();
 
     m_numOfWorkers = 0;
@@ -52,7 +56,10 @@ void MainWindow::onGoal(bool goal, unsigned i) {
 }
 
 void MainWindow::onFinish() {
+    m_numOfWorkers--;
     if(m_numOfWorkers == 0) {
+        removeAndShowCompetitorsMedian();
+
         m_ui->pbLoad->setDisabled(false);
         m_ui->pbBeginMatch->setDisabled(false);
     }
@@ -83,7 +90,45 @@ void MainWindow::loadCompetitors() {
 
 void MainWindow::showCompetitors() {
     m_ui->lwFootballers->clear();
+    m_ui->lwMatch->clear();
+    m_ui->lwFootballersMedian->clear();
     for(const auto& c : m_competitors) {
         m_ui->lwFootballers->addItem(c->toQString());
+    }
+}
+
+void MainWindow::removeAndShowCompetitorsMedian() {
+    auto median = calculateMedian();
+    for(const auto& c : m_competitors) {
+        if(c->getPoints() < median) {
+            m_ui->lwFootballersMedian->addItem(c->toQString());
+        }
+    }
+
+    m_competitors.removeIf([&median](const auto& c) {
+        if(c->getPoints() < median) {
+            delete c;
+            return true;
+        }
+        return false;
+    });
+
+    if(m_competitors.size() == 1) {
+        QMessageBox::information(this, "Pobednik", "Pobednik je " + m_competitors[0]->getName());
+    }
+}
+
+unsigned MainWindow::calculateMedian() const {
+    std::vector<unsigned> v;
+    for(const auto& c : m_competitors) {
+        v.push_back(c->getPoints());
+    }
+
+    std::sort(v.begin(), v.end());
+
+    if(v.size() % 2 == 0) {
+        return (v[v.size()/2 - 1] + v[v.size()/2]) / 2;
+    } else {
+        return v[v.size()/2];
     }
 }

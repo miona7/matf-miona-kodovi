@@ -16,7 +16,7 @@ void Street::fromQVariant(const QVariant& variant) {
 }
 
 QString Street::toQString() const {
-    auto res = "Ulica " + m_name + " dekoracije [";
+    auto res = "Ulica " + m_name + ", dekoracije [";
     for(auto i = 0; i < m_numOfCurrDecorations.size(); i++) {
         res += QString::number(m_numOfCurrDecorations[i]);
         if(i != m_numOfCurrDecorations.size() - 1) {

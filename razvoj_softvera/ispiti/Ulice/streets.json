@@ -1,0 +1,24 @@
+{
+    "streets": [
+      {
+        "name": "Bulevar Kralja Aleksandra",
+        "poleHeight": 12,
+        "decorations": [3, 5, 2]
+      },
+      {
+        "name": "Nemanjina",
+        "poleHeight": 15,
+        "decorations": [4, 4, 3, 1]
+      },
+      {
+        "name": "Takovska",
+        "poleHeight": 10,
+        "decorations": [2, 1]
+      },
+      {
+        "name": "Cara Dušana",
+        "poleHeight": 8,
+        "decorations": [1, 1, 1, 2]
+      }
+    ]
+}

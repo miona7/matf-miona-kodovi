@@ -22,3 +22,4 @@ AlgoVision is a team-based software engineering project developed as part of the
 
 ### Project Outcome
 - Achieved **full marks (40/40)** ✨
+- **Unofficial GitHub repository:** [AlgoVision](https://github.com/miona7/AlgoVision) - I will continue to independently make updates and improvements to the project in this repository

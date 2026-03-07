@@ -1,0 +1,9 @@
+{
+    "streets": [
+      {
+        "name": "Takovska",
+        "poleHeight": 10,
+        "decorations": [2]
+      }
+    ]
+}

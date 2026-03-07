@@ -1,0 +1,19 @@
+{
+    "streets": [
+      {
+        "name": "Zmaj Jovina",
+        "poleHeight": 11,
+        "decorations": [2, 3, 4]
+      },
+      {
+        "name": "Makedonska",
+        "poleHeight": 13,
+        "decorations": [5, 1]
+      },
+      {
+        "name": "Kralja Petra",
+        "poleHeight": 9,
+        "decorations": [3, 3, 3]
+      }
+    ]
+}

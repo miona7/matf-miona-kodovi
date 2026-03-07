@@ -19,25 +19,28 @@ void MainWindow::onLoadStreets() {
 }
 
 void MainWindow::loadStreets() {
-    QString fileName = QFileDialog::getOpenFileName(this, "select json file", "", "*.json");
-    if(fileName.isEmpty()) {
-        return;
-    }
-
-    QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) {
-        return;
-    }
-
-    auto doc = QJsonDocument::fromJson(file.readAll());
-    file.close();
+    auto filesNames = QFileDialog::getOpenFileNames(this, "select json file", "", "*.json");
 
     qDeleteAll(m_streets);
     m_streets.clear();
 
-    auto streets = doc.toVariant().toMap()["streets"].toList();
-    for(const auto& s : streets) {
-        m_streets.append(new Street(s));
+    for(auto fileName : filesNames) {
+        QFile file(fileName);
+        if(fileName.isEmpty()) {
+            continue;
+        }
+
+        if(!file.open(QIODevice::ReadOnly)) {
+            return;
+        }
+
+        auto doc = QJsonDocument::fromJson(file.readAll());
+        file.close();
+
+        auto streets = doc.toVariant().toMap()["streets"].toList();
+        for(const auto& s : streets) {
+            m_streets.append(new Street(s));
+        }
     }
 }
 

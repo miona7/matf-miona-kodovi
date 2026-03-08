@@ -29,7 +29,7 @@ void MainWindow::onBeginWork() {
     m_ui->pbBeginWork->setDisabled(true);
     m_ui->pbSaveLog->setDisabled(true);
 
-    m_numOfTeams = m_ui->sbNumOfTeams->text().toUInt();
+    m_numOfTeams = static_cast<unsigned>(m_ui->sbNumOfTeams->value());
     m_ui->sbNumOfTeams->setDisabled(true);
 
     m_ui->pteLog->clear();
@@ -77,7 +77,8 @@ void MainWindow::onWorkersFinished(Street* street, unsigned index, bool normally
 
 void MainWindow::onRemoved(Street* street, unsigned index, unsigned decor) {
     showStreets();
-    m_ui->pteLog->appendPlainText("Ekipa " + QString::number(index) + " u ulici " + street->getName() + " je uklonila " + QString::number(decor));
+    m_ui->pteLog->appendPlainText("Ekipa " + QString::number(index) + " u ulici " + street->getName() +
+                                  " je uklonila " + QString::number(decor) + " dekoracija");
 }
 
 void MainWindow::onSaveLog() {
@@ -109,7 +110,7 @@ void MainWindow::loadStreets() {
         }
 
         if(!file.open(QIODevice::ReadOnly)) {
-            return;
+            continue;
         }
 
         auto doc = QJsonDocument::fromJson(file.readAll());

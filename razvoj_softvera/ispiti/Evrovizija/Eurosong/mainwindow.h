@@ -7,7 +7,10 @@
 #include <QJsonDocument>
 #include <QList>
 
+#include <algorithm>
+
 #include "singer.h"
+#include "voteworker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +27,8 @@ public:
 
 public slots:
     void onLoadSingers();
+    void onBeginVoting();
+    void onVoted();
 
 private:
     Ui::MainWindow* m_ui;
@@ -31,5 +36,6 @@ private:
 
     void loadSingers();
     void showSingers();
+    void showVotes();
 };
 #endif // MAINWINDOW_H

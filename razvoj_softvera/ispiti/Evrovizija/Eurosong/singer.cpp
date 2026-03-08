@@ -13,3 +13,19 @@ void Singer::fromQVariant(const QVariant& variant) {
 QString Singer::toQString() const {
     return m_name + ": " + QString::number(m_points);
 }
+
+void Singer::addPoints(unsigned points) {
+    m_points += points;
+}
+
+QString Singer::getName() const {
+    return m_name;
+}
+
+unsigned Singer::getPoints() const {
+    return m_points;
+}
+
+QMutex* Singer::getMutex() {
+    return &m_mutex;
+}

@@ -1,0 +1,12 @@
+{
+    "countries": [
+      { "name": "Serbia", "points": 0 },
+      { "name": "Italy", "points": 0 },
+      { "name": "France", "points": 0 },
+      { "name": "Germany", "points": 0 },
+      { "name": "Spain", "points": 0 },
+      { "name": "Sweden", "points": 0 },
+      { "name": "Norway", "points": 0 },
+      { "name": "Greece", "points": 0 }
+    ]
+}

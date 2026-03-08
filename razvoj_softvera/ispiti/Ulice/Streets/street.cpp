@@ -48,3 +48,19 @@ int Street::getDecoratedLamppost() const {
         }
     }
 }
+
+void Street::setDecorations(int index, unsigned numOfDec) {
+    m_numOfCurrDecorations[index] -= std::min(m_numOfCurrDecorations[index], numOfDec);
+}
+
+QString Street::getName() const {
+    return m_name;
+}
+
+unsigned Street::getHeight() const {
+    return m_height;
+}
+
+QMutex* Street::getMutex() {
+    return &m_mutex;
+}

@@ -9,6 +9,7 @@
 #include <QJsonDocument>
 
 #include "street.h"
+#include "worker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,10 +26,16 @@ public:
 
 public slots:
     void onLoadStreets();
+    void onBeginWork();
+    void onWorkersFinished(Street*, unsigned, bool);
+    void onRemoved(Street*, unsigned, unsigned);
+    void onSaveLog();
 
 private:
     Ui::MainWindow* m_ui;
     QList<Street*> m_streets;
+    unsigned m_numOfWorkers;
+    unsigned m_numOfTeams;
 
     void loadStreets();
     void showStreets();

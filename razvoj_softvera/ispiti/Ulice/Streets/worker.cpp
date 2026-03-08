@@ -9,7 +9,7 @@ void Worker::run() {
 
     while(true) {
         QMutexLocker lock(m_street->getMutex());
-        unsigned index = m_street->getDecoratedLamppost();
+        int index = m_street->getDecoratedLamppost();
         if(index == -1) {
             emit finishedNormally(m_street, m_id, true);
             break;

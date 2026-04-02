@@ -27,6 +27,9 @@ The repository is organized by courses and programming languages:
 - **Programske paradigme** – Haskell, Prolog, Scala, Python  
   Examples and assignments exploring functional, concurrent, distributed and declarative programming paradigms.
 
+- **Veštačka inteligencija** - Python (Jupyter Notebook)    
+  Assignments covering state-space search algorithms, automated reasoning (SAT/SMT solvers), and an introduction to machine learning models and data classification.
+
 - **Istraživanje podataka 1** – Python (Jupyter Notebook), IBM SPSS Modeler  
   Exercises focused on data preprocessing, exploratory data analysis, model building, and basic machine learning workflows using both Python and SPSS Modeler.
 
@@ -42,6 +45,9 @@ The repository is organized by courses and programming languages:
 
 - **Alati za razvoj softvera** - Git, CMake, Valgrind, Callgrind, Docker, Clang (format & tidy), Gcov/Lcov, Doxygen, Bash    
   Exercises and assignments focused on using modern tools and technologies for software development.
+
+- **Funkcionalno programiranje** - Haskell  
+  Exercises focused on the functional programming paradigm, emphasizing strong typing, higher-order functions, recursion, and algebraic data types.   
 
 ---
 

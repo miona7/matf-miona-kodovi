@@ -24,6 +24,9 @@ The repository is organized by courses and programming languages:
 - **Prevođenje programskih jezika** – C++, Yacc, Bison  
   Code related to compiler construction, language parsing, and syntax analysis.
 
+- **Uvod u numeričku matematiku** - Matlab   
+  Numerical solutions for interpolation, numerical integration and differentiation, as well as solving both linear and non-linear systems of equations.   
+
 - **Programske paradigme** – Haskell, Prolog, Scala, Python  
   Examples and assignments exploring functional, concurrent, distributed and declarative programming paradigms.
 

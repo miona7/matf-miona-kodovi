@@ -5,8 +5,12 @@ m = 0.001; % masa tega
 % mi = 1.82*1e-5; % vazduh
 mi = 0.00089; % voda
 g = 9.81;
-theta0 = pi/2; % pocetni ugao
-v0 = 30; % pocetna brzina
+% pocetni ugao
+theta0 = pi/2; 
+% theta0 = pi;
+% pocetna brzina
+v0 = 0;
+% v0 = 30; 
 O = [0 0];
 tend = 50;
 init = [theta0, v0/l];
@@ -45,3 +49,10 @@ for i = 1:length(t)
         delete(kanap);
     end
 end
+
+% grafik ugla u vremenu i brzine u vremenu
+figure(2)
+hold on
+plot(t, x(:, 1));
+plot(t, x(:, 2));
+hold off

@@ -50,8 +50,11 @@ The repository is organized by courses and programming languages:
   Exercises and assignments focused on using modern tools and technologies for software development.
 
 - **Funkcionalno programiranje** - Haskell  
-  Exercises focused on the functional programming paradigm, emphasizing strong typing, higher-order functions, recursion, and algebraic data types.   
+  Exercises focused on the functional programming paradigm, emphasizing strong typing, higher-order functions, recursion, and algebraic data types.
 
+- **Osnove matematičkog modeliranja** - Matlab    
+  Development and simulation of mathematical models using ordinary differential equations (ODEs), stochastic processes, and data-driven modeling techniques.    
+  
 ---
 
 💡 *Feel free to explore or use these examples for learning purposes.*

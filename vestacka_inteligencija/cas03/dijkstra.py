@@ -1,6 +1,5 @@
-import sys
-import os
 import json
+from typing import List
 
 def load_graph(path):
     try:
@@ -11,7 +10,7 @@ def load_graph(path):
         print("Error loading graph from file.")
         return None
     
-def dijkstra(graph, start, end):
+def dijkstra(graph : dict, start : str, end : str) -> List[str]:
     if start not in graph or end not in graph:
         return []
 

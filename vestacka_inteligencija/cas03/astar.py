@@ -47,10 +47,12 @@ def astar(graph : dict, start : str, end : str) -> List[str] :
     parent[start] = None
 
     while open_list:
-        u = None
-        for v in open_list:
-            if u is None or g[v] + h(v) < g[u] + h(u):
-                u = v
+        u = min(open_list, key = lambda v: g[v] + h(v))
+
+        # u = None
+        # for v in open_list:
+        #    if u is None or g[v] + h(v) < g[u] + h(u):
+        #        u = v
 
         if u is None:
             break

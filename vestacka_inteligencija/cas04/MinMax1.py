@@ -1,6 +1,11 @@
 import copy
 
+num_of_calls = 0
+
 def Min(state):
+    global num_of_calls
+    num_of_calls += 1
+
     if state.end():
         return state.evaluate(), state
     
@@ -15,6 +20,9 @@ def Min(state):
     return current_best_move_value, best_move
 
 def Max(state):
+    global num_of_calls
+    num_of_calls += 1
+
     if state.end():
         return state.evaluate(), state
     
@@ -126,6 +134,7 @@ if __name__ == "__main__":
 
         # igrac O -> Min
         _, next_move = Min(game)
+        print("Num of calls = ", num_of_calls)
         game.play_move(next_move.last_move)
         game.draw_board()
         print()

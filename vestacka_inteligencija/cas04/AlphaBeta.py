@@ -1,7 +1,12 @@
 import copy
 
+num_of_calls = 0
+
 # postavlja i azurira gornje ogranicenje - beta
 def Min(state, alpha = float("-inf"), beta = float("inf")):
+    global num_of_calls
+    num_of_calls += 1
+
     if state.end():
         return state.evaluate(), state
     
@@ -24,6 +29,9 @@ def Min(state, alpha = float("-inf"), beta = float("inf")):
 
 # postavlja i azurira donje ogranicenje - alpha
 def Max(state, alpha = float("-inf"), beta = float("inf")):
+    global num_of_calls
+    num_of_calls += 1
+
     if state.end():
         return state.evaluate(), state
     
@@ -138,6 +146,7 @@ if __name__ == "__main__":
             break
 
         _, next_move = Min(game)
+        print("Num of calls = ", num_of_calls)
         game.play_move(next_move.last_move)
         game.draw_board()
         print()

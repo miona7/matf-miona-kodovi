@@ -28,16 +28,19 @@ library:
 executables:
   project-exe:
     main:                Main.hs
-    source-dirs:         app
+    source-dirs:         
+    - app
+    - test
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - project
+    - QuickCheck
 
 tests:
-  project:
+  project-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:

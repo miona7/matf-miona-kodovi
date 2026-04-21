@@ -4,7 +4,7 @@ module Lib ( fromList
            , focusPrev
            , closeWindow
            , openWindow
-           ) where
+           ) where -- definicija funkcija -> u zagradi sve ono  sto je javno u ovom modulu
 
 data Ring t = MkRing [t] [t]
 
@@ -16,17 +16,19 @@ toList (MkRing ls rs) = ls ++ reverse rs
 
 switchActive :: Ring t -> Ring t
 switchActive r@(MkRing [] []) = r
-switchActive r@(MkRing [w] []) = r
+switchActive r@(MkRing [_] []) = r
 switchActive (MkRing [w] rs) = switchActive (MkRing (w:reverse rs) [])
 switchActive (MkRing (active:next:others) rs) = MkRing (next:active:others) rs
 
 focusNext :: Ring t -> Ring t
 focusNext r@(MkRing [] []) = r
+focusNext r@(MkRing [_] []) = r
 focusNext (MkRing [w] rs) = focusNext (MkRing (w:reverse rs) [])
 focusNext (MkRing (l:ls) r) = MkRing ls (l:r)
 
 focusPrev :: Ring t -> Ring t
 focusPrev r@(MkRing [] []) = r
+focusPrev r@(MkRing [_] []) = r
 focusPrev (MkRing l []) = focusPrev (MkRing [] (reverse l))
 focusPrev (MkRing l (r:rs)) = MkRing (r:l) rs
 

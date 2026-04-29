@@ -49,6 +49,9 @@ The repository is organized by courses and programming languages:
 - **Alati za razvoj softvera** - Git, CMake, Valgrind, Callgrind, Docker, Clang (format & tidy), Gcov/Lcov, Doxygen, Bash    
   Exercises and assignments focused on using modern tools and technologies for software development.
 
+- **Projektovanje baza podataka** - PostgreSQL     
+  Advanced database design, including ER modeling, normalization (up to BCNF), and implementation of complex business logic using triggers, stored procedures, and indexes for performance optimization.   
+
 - **Funkcionalno programiranje** - Haskell  
   Exercises focused on the functional programming paradigm, emphasizing strong typing, higher-order functions, recursion, and algebraic data types.
 

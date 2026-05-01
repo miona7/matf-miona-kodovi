@@ -2,7 +2,7 @@ import os
 import cnf as f
 from itertools import product
 
-def minisat_solve(problem_name, problem_dimacs, number_to_var):
+def minisat_solve(problem_name, problem_dimacs, number_to_var_name):
     with open(f"{problem_name}.cnf", "w") as file:
         file.write(problem_dimacs)
 
@@ -17,7 +17,7 @@ def minisat_solve(problem_name, problem_dimacs, number_to_var):
         var_values = {}
         for var in lines[1].split(" ")[:-1]:
             var_number = int(var)
-            var_name = number_to_var[abs(var_number)]
+            var_name = number_to_var_name[abs(var_number)]
             var_values[var_name] = var_number > 0
                                                         # pretvara mapu u listu torki tj parova
         true_vars = list(filter(lambda v: v[1] is True, var_values.items()))

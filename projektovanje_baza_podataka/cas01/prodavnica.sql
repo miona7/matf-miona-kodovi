@@ -16,8 +16,8 @@
 -- e) Napisati naredbu nezavisnu od naredbe za kreiranje tabele Kupac, kojom se toj tabeli dodaje uslov da imejl adresa mora biti poznata.
 -- Napisati naredbu kojom se brise kolona kategorija vec kreirane tabele Dostavljac.
 
-drop shema if exists PRODAVNICA cascaded;
-create shema PRODAVNICA;
+drop schema if exists PRODAVNICA cascade;
+create schema PRODAVNICA;
 set search_path to PRODAVNICA;
 
 create table KUPAC(

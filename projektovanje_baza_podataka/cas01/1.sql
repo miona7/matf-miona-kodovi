@@ -16,9 +16,9 @@ create table STUDENT(
 );
 
 insert into STUDENT
-values (1332022, 'Miona', 'Sretenovic', '18.09.2003.'),
-       (1232022, 'Pera', 'Peric'),
-       (0042021, 'Ana', 'Anic', '16.05.2002.');
+values (1332022, 'Miona', 'Sretenovic', '2003-09-18'),
+       (1232022, 'Pera', 'Peric', '2002-04-28'),
+       (0042021, 'Ana', 'Anic', '2002-05-16');
 
 select *
 from STUDENT;
@@ -63,11 +63,17 @@ create table ISPIT(
 );
 
 insert into ISPIT
-values (1332022, 2, '11.01.2023.', 10),
-       (1332022, 3, '25.02.2024.', 10);
+values (1332022, 2, '2023-01-11', 10),
+       (1332022, 3, '2024-02-25', 10);
+
+select *
+from ISPIT;
 
 -- 3. alter -> omogucava izmenu vec postojeceg objekta
 
 -- omogucava naknadno dodavanje, brisanje ili menjanje kolona i ogranicenja
 alter table ISPIT
 add column TRAJANJE_U_CASOVIMA int; -- vestacki primer
+
+select *
+from ISPIT;

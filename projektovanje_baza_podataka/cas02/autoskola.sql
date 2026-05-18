@@ -1,4 +1,4 @@
-drop shema if exists AUTOSKOLA cascade;
+drop schema if exists AUTOSKOLA cascade;
 create schema AUTOSKOLA;
 set search_path to AUTOSKOLA;
 
@@ -31,7 +31,8 @@ values ('Pera', 'Peric'),
        ('Mika', 'Mikic'),
        ('Zika', 'Zikic');
 
-select * from POLAZNIK;
+select *
+from POLAZNIK;
 
 -- a) Prilikom umetanja ili azuriranja novog ispita, potrebno je automatski odrediti
 --    njegov ishod. Ishod moze biti 'polozio' ili 'pao', pri cemu je polaznik:
@@ -58,19 +59,21 @@ before insert or update on ISPIT
 for each row
 execute function ODREDI_I_DODAJ_ISHOD_ISPITA();
 
-insert into ISPIT(SIFRA_POLAZNIKA, DATUM, TIP_ISPITA, BODOVI)
+insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
 values (1, '2025-10-10', 'teorijski', 92);
 
-insert into ISPIT(SIFRA_POLAZNIKA, DATUM, TIP_ISPITA, BODOVI)
+insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
 values (1, '2025-10-10', 'prakticni', 17);
 
-select * from ISPIT;
+select *
+from ISPIT;
 
 update ISPIT
 set BODOVI = 14
 where ID_POLAZNIKA = 1 AND TIP_ISPITA = 'prakticni';
 
-select * from ISPIT;
+select *
+from ISPIT;
 
 -- b) Potrebno je validirati izdavanje vozackih dozvola. Polazniku se dozvola moze
 --    izdati samo ukoliko je prethodno polozio i teorijski, i prakticni ispit. U
@@ -80,8 +83,8 @@ create function VALIDIRAJ_IZDAVANJE_DOZVOLE()
 returns trigger as
 $$
 -- declare -> definisanje promenljive za zadati blok
-declare POLOZIO_TEORIJSKI boolean
-        POLOZIO_PRAKTICNI boolean
+declare POLOZIO_TEORIJSKI boolean;
+        POLOZIO_PRAKTICNI boolean;
 begin
     POLOZIO_TEORIJSKI := exists (
         select *
@@ -93,7 +96,7 @@ begin
         select *
         from ISPIT
         where ID_POLAZNIKA = new.ID and TIP_ISPITA = 'prakticni' and ISHOD = 'polozio'
-    )
+    );
 
     if new.IZDATA_DOZVOLA = true and (not POLOZIO_TEORIJSKI or not POLOZIO_PRAKTICNI) then
        raise exception 'Da bi se izdala dozvola, polaznik % % mora poloziti i teorijski i prakticni!', new.IME, new.PREZIME;
@@ -106,6 +109,17 @@ create trigger VALIDIRAJ_IZDAVANJE_DOZVOLE
 before insert or update on POLAZNIK
 for each row
 execute function VALIDIRAJ_IZDAVANJE_DOZVOLE();
+
+update POLAZNIK
+set IZDATA_DOZVOLA = true
+where ID = 1;
+
+select *
+from POLAZNIK;
+
+-- update POLAZNIK
+-- set IZDATA_DOZVOLA = true
+-- where ID = 2;
 
 -- c) U posebnoj tabeli STATISTIKE se prate statistike o polaganjima teorijskih
 --    i prakticnih ispita (konkretno, prati se broj polaganja i broj polozenih

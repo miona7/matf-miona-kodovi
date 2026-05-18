@@ -60,10 +60,8 @@ for each row
 execute function ODREDI_I_DODAJ_ISHOD_ISPITA();
 
 insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
-values (1, '2025-10-10', 'teorijski', 92);
-
-insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
-values (1, '2025-10-10', 'prakticni', 17);
+values (1, '2025-10-10', 'teorijski', 92),
+        (1, '2025-10-10', 'prakticni', 17);
 
 select *
 from ISPIT;
@@ -122,6 +120,69 @@ from POLAZNIK;
 -- where ID = 2;
 
 -- c) U posebnoj tabeli STATISTIKE se prate statistike o polaganjima teorijskih
---    i prakticnih ispita (konkretno, prati se broj polaganja i broj polozenih
---    ispita). Prilikom bilo kakvih operacija nad tabelom ISPIT, potrebno je azurirati i odgovarajuce statistike.
+--    i prakticnih ispita (konkretno, prati se broj polaganja i broj polozenih ispita).
+--    Prilikom bilo kakvih operacija nad tabelom ISPIT, potrebno je azurirati i odgovarajuce statistike.
 --    Pretpostaviti da tabela STATISTIKE vec sadrzi odgovarajuce redove za teorijske i prakticne ispite.
+
+insert into STATISTIKE(TIP_ISPITA)
+values ('teorijski'), ('prakticni');
+
+delete from ISPIT where true;
+
+create function AZURIRAJ_STATISTIKE()
+returns trigger as
+$$
+begin
+    if tg_op = 'INSERT' then
+        update STATISTIKE
+        set BROJ_POLAGANJA = BROJ_POLAGANJA + 1,
+            BROJ_POLOZENIH = BROJ_POLOZENIH + case when new.ISHOD = 'polozio' then 1 else 0 end
+        where TIP_ISPITA = new.TIP_ISPITA;
+    elsif tg_op = 'UPDATE' then -- update = delete + insert
+        update STATISTIKE
+        set BROJ_POLAGANJA = BROJ_POLAGANJA - 1,
+            BROJ_POLOZENIH = BROJ_POLOZENIH - case when old.ISHOD = 'polozio' then 1 else 0 end
+        where TIP_ISPITA = old.TIP_ISPITA;
+
+        update STATISTIKE
+        set BROJ_POLAGANJA = BROJ_POLAGANJA + 1,
+            BROJ_POLOZENIH = BROJ_POLOZENIH + case when new.ISHOD = 'polozio' then 1 else 0 end
+        where TIP_ISPITA = new.TIP_ISPITA;
+    elsif tg_op = 'DELETE' then
+        update STATISTIKE
+        set BROJ_POLAGANJA = BROJ_POLAGANJA - 1,
+            BROJ_POLOZENIH = BROJ_POLOZENIH - case when old.ISHOD = 'polozio' then 1 else 0 end
+        where TIP_ISPITA = old.TIP_ISPITA;
+    else
+       raise exception 'Nevalidna operacija!';
+    end if;
+
+    return null;
+end;
+$$ language plpgsql;
+
+create trigger AZURIRAJ_STATISTIKE
+after insert or update or delete on ISPIT
+for each row
+execute function AZURIRAJ_STATISTIKE();
+
+insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
+values (1, '2025-10-10', 'teorijski', 92),
+        (1, '2025-10-10', 'prakticni', 17),
+        (2, '2025-10-10', 'teorijski', 43);
+
+update ISPIT
+set TIP_ISPITA = 'prakticni'
+where ID_POLAZNIKA = 2 AND TIP_ISPITA = 'teorijski';
+
+delete from ISPIT
+where ID_POLAZNIKA = 1 and TIP_ISPITA = 'prakticni';
+
+insert into ISPIT(ID_POLAZNIKA, DATUM_POLAGANJA, TIP_ISPITA, BODOVI)
+values (1, '2025-10-18', 'prakticni', 3);
+
+select *
+from ISPIT;
+
+select *
+from STATISTIKE;

@@ -1,0 +1,8 @@
+% fof(ime_formule, aksiom | konjektura, formula).
+% ! = za svako
+% promenljive moraju da pocinju velikim slovom, konstante malim
+
+fof(a1, axiom, ![X]:(rich(X) => happy(X))).
+fof(a2, axiom, rich(miona)).
+
+fof(c1, conjecture, happy(miona)).

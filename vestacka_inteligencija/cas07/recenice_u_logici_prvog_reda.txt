@@ -1,0 +1,213 @@
+1. zadatak
+a. Svako zadovoljstvo se plaća.
+
+    // prvo se resavamo kvantifikatora
+    zadovoljstvo se plaća
+
+    z(x) - x je zadovoljstvo
+    p(x) - x se plaća
+
+    (∀x)(z(x) => p(x))
+
+    // NETACNO: (∀x)(z(x) & p(x)) -> Sve je zadovoljstvo i sve se plaća.
+
+b. Postoji zadovoljstvo koje se plaća.
+
+    zadovoljstvo koje se plaća
+
+    z(x) - x je zadovoljstvo
+    p(x) - x se plaća
+
+    (∃x)(z(x) & p(x))
+
+c. Ni jedno zadovoljstvo nije posao.
+
+    z(x) - x je zadovoljstvo
+    p(x) - x je posao 
+
+    (∀x)(z(x) => ~p(x))
+
+    // NETACNO: (∀x)(z(x) & ~p(x)) -> Sve je zadovoljstvo i nista nije posao.
+
+2. zadatak
+Sve što leti to ima krila i lagano je.
+Sve što pliva to nema krila.
+Sve što pliva to ne leti.
+
+l(x) - x leti
+k(x) - x ima krila
+lag(x) - x je lagano
+p(x) - x pliva
+
+(∀x)(l(x) => (k(x) & lag(x)))
+(∀x)(p(x) => ~k(x))
+(∀x)(p(x) => ~l(x))
+
+3. zadatak
+Dve nemimoilazne prave se seku ili su paralelne.
+Prave koje se seku leže u istoj ravni.
+Prave koje su paralelne leže u istoj ravni.
+Dve nemimoilazne prave leže u istoj ravni.
+
+n(x, y) - prave x i y su nemimoilazne
+s(x, y) - prave x i y se seku
+p(x, y) - prave x i y su paralelne
+r(x, y) - prave x i y leze u istoj ravni
+
+(∀x)(∀y)(n(x, y) => (s(x, y) | p(x, y)))
+(∀x)(∀y)(s(x, y) => r(x, y))
+(∀x)(∀y)(p(x, y) => r(x, y))
+(∀x)(∀y)(n(x, y) => r(x, y))
+
+4. zadatak
+Svaka dva brata imaju zajedničkog roditelja.
+Roditelj je stariji od deteta.
+Postoje braća.
+Ni jedna osoba nije starija od druge.
+
+b(x, y) - x i y su braća
+r(x, y) - x je roditelj od y
+s(x, y) - x je stariji od y
+
+(∀x)(∀y)(∃z)(b(x, y) => (r(z, x) & r(z, y)))
+(∀x)(∀y)(r(x, y) => s(x, y))
+(∃x)(∃y)(b(x, y))
+(∀x)(∀y)(~s(x, y))
+
+5. zadatak
+Svako ima rođaka na moru ili na planini.
+Ko ima rođaka na moru, bio je na moru.
+Ko ima rođaka na planini, bio je na planini.
+Neko nije bio ni na moru, ni na planini.
+
+rm(x) - x ima rođaka na moru
+rp(x) - x ima rođaka na planini
+m(x) - x je bio na moru
+p(x) - x je bio na planini
+
+(∀x)(rm(x) | rp(x))
+(∀x)(rm(x) => m(x))
+(∀x)(rp(x) => p(x))
+(∃x)(~m(x) & ~p(x))
+
+6. zadatak
+Svako ruča kod kuće ili u restoranu.
+Ko ruča u restoranu i nema novca, taj pere sudove u restoranu.
+Janko nema novaca.
+Janko ruča kod kuće ili pere sudove u restoranu.
+
+// predikatski simboli
+rk(x) - x ruca kod kuce
+rr(x) - x ruca u restoranu
+nn(x) - x nema novca
+ps(x) - x pere sudove u restoranu
+
+// funkcijski simboli
+j - Janko
+ar(j) = 0
+
+(∀x)(rk(x) | rr(x))
+(∀x)((rr(x) & nn(x)) => ps(x))
+nn(j)
+rk(j) | ps(j)
+
+7. zadatak
+Ko rano rani, ceo dan je pospan.
+Ko rano rani ceo dan je pospan ili dve sreće grabi.
+Ko dve sreće grabi, ceo dan je pospan.
+
+rr(x) - x rano rani
+p(x) - x je pospan ceo dan
+ds(x) - x grabi dve sreće
+
+(∀x)(rr(x) => p(x))
+(∀x)(rr(x) => (p(x) | ds(x)))
+(∀x)(ds(x) => p(x))
+
+8. zadatak
+Ko se vozi avionom dosta zarađuje.
+Ko dosta zarađuje puno radi.
+Janko se vozi avionom.
+Janko ne radi puno.
+
+// predikatski simboli
+a(x) - x se vozi avionom
+z(x) - x dosta zarađuje
+r(x) - x puno rano
+
+// funkcijski simboli
+j - Janko
+ar(j) = 0
+
+(∀x)(a(x) => z(x))
+(∀x)(z(x) => r(x))
+a(j)
+~r(j)
+
+9. zadatak
+Ako postoji cipela koja u svakom trenutku odgovara svakoj nozi,
+onda za svaku nogu postoji cipela koja joj u nekom trenutku
+odgovara i za svaku nogu postoji trenutak takav da postoji cipela
+koja joj u tom trenutku odgovara.
+
+A => (B & C)
+A = cipela koja u trenutku odgovara nozi
+B = za nogu cipela koja joj u trenutku odgovara
+C = za nogu trenutak takav da cipela koja joj u trenutku odgovara
+
+p(x, y, z) - nogi X odgovara cipela Y u trenutku Z
+
+(∃y)(∀z)(∀x)p(x, y, z) => ((∀x)(∃y)(∃z)p(x, y, z) & (∀x)(∃z)(∃y)p(x, y, z))
+
+10. zadatak
+Ko laže taj krade.
+Ko krade i uhvaćen je u krađi, taj ide u zatvor.
+Al Kapone laže.
+Al Kapone je uhvaćen u krađi.
+Laki Lućiano laže.
+
+// predikatski simboli
+l(x) - x laže
+k(x) - x krade
+u(x) - x je uhvaćen u krađi
+z(x) - x ide u zatvor
+
+// funkcijski simboli
+ak - Al Kapone
+ll - Laki Lućiano
+ar(ak) = 0, ar(ll) = 0
+
+(∀x)(l(x) => k(x))
+(∀x)((k(x) & u(x)) => z(x))
+l(ak)
+u(ak)
+l(ll)
+
+11. zadatak
+Ako onaj ko laže taj i krade i ako bar neko laže, onda neko i krade.
+
+l(x) - x laže
+k(x) - x krade
+
+((∀x)(l(x) => k(x)) & (∃x)l(x)) => (∃x)k(x)
+
+12. zadatak
+Ako je X prijatelj osobe Y, onda je Y prijatelj osobe X.
+Ako je X prijatelj osobe Y, onda X voli Y.
+Ne postoji neko ko je povredio osobu koju voli.
+Janko je povredio svog prijatelja Marka.
+
+// predikatski simboli
+p(x, y) - x je prijatelj od y
+v(x, y) - x voli y
+pov(x, y) - x je povredio y
+
+// funkcijski simboli
+j - Janko
+m - Marka 
+ar(j) = 0, ar(m) = 0
+
+(∀x)(∀y)(p(x, y) => p(y, x))
+(∀x)(∀y)(p(x, y) => v(x, y))
+~[(∃x)(∃y)(pov(x, y) & v(x, y))] <=> (∀x)(∀y)(~pov(x, y) | ~v(x, y))
+p(m, j) & pov(j, m)

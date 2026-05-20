@@ -18,7 +18,7 @@ create function PROVERI_CENU()
 returns trigger as
 $$
 begin
-    if new.CENA < 0 then
+    if new.CENA <= 0 then
        raise exception 'Cena ne sme da bude negativna';
     end if;
     return new;

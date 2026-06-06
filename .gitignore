@@ -49,3 +49,6 @@ Thumbs.db
 *~
 __*
 *.cnf
+*.hi
+word_count
+word_count_hashmap

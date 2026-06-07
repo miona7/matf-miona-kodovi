@@ -1,4 +1,7 @@
 module Zad2 where
+-- ghc -main-is Zad2 2.hs -o 2
+
+import qualified System.Environment as Sys
 
 -- Zadatak 2:
 -- Napisati program koji iz fajla čija je putanja data kao argument 
@@ -27,4 +30,32 @@ module Zad2 where
 --     11034
 
 main :: IO ()
-main = putStrLn "Srecno"
+main = do 
+    -- putStrLn "Srecno"
+
+    (arg:_) <- Sys.getArgs
+
+    text <- readFile arg
+
+    let nums = lines text
+    let res = show $ sum' nums
+    let n = length res
+    
+    print' $ transform n nums
+    putStrLn $ replicate n '-'
+    putStrLn res
+
+print' :: [String] -> IO ()
+print' [] = return ()
+print' (x:xs) = do
+    putStrLn x
+    print' xs
+
+transform :: Int -> [String] -> [String]
+transform n nums = map (\s -> fill (n - length s) s) nums
+    where
+        fill k s = replicate k ' ' ++ s
+
+sum' :: [String] -> Int
+sum' [] = 0
+sum' (x:xs) = (read x :: Int) + sum' xs

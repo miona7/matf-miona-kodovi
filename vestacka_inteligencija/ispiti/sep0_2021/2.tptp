@@ -1,0 +1,25 @@
+% Tekst zadatka:
+% U neusmerenom grafu G, postoji put od čvora X do čvora Y ako je X sused od Y, ili ako postoji neki čvor Z koji je 
+% sused od Y takav da postoji put od X do Z. Korišćenjem ovih aksioma, potrebno je napisati TPTP fajl i pomoću Vampire 
+% rešavača dokazati da u grafu sa slike postoji put od čvora A do čvora F. Graf sa slike ima sledeće neusmerene grane:
+% A je povezano sa B
+% B je povezano sa C i D
+% C je povezano sa E
+% D je povezano sa E
+% E je povezano sa F
+
+% aksiome
+fof(a1, axiom, ![X, Y]: (sused(X, Y) => postoji_put(X, Y))).
+fof(a2, axiom, ![X, Y]: (sused(X, Y) => sused(Y, X))).
+fof(a3, axiom, ![X, Y, Z]: ((postoji_put(X, Z) & sused(Z, Y)) => postoji_put(X, Y))).
+
+% grane u grafu
+fof(grana1, axiom, sused(a, b)).
+fof(grana2, axiom, sused(b, c)).
+fof(grana3, axiom, sused(b, d)).
+fof(grana4, axiom, sused(c, e)).
+fof(grana5, axiom, sused(d, e)).
+fof(grana6, axiom, sused(e, f)).
+
+% hipoteza
+fof(c1, conjecture, postoji_put(a, f)).
